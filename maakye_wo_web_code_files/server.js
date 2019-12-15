@@ -38,7 +38,10 @@ mongoose.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true });
 // ========================================== app routes ============================================ //
 app.get('/', (req, res) => {
     // useful for postman testing
-    res.json({ "message": "Welcome to maakye wo application." });
+    // res.json({ "message": "Welcome to maakye wo application." });
+
+    // useful for rendering views in browser
+    res.redirect('/users');
 });
 
 //====================================== requiring list routes ========================================//
@@ -46,6 +49,7 @@ require('./routes/roads.routes')(app);
 require('./routes/users.routes')(app);
 require('./routes/videos.routes')(app);
 require('./routes/vehicles.routers')(app);
+require('./routes/dashboard.routes')(app);
 
 
 // ====================================== app listening port ======================================== //
