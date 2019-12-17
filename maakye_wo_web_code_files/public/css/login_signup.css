@@ -1,0 +1,10 @@
+#login_container,
+#signup_container {
+    margin-top: 7vh;
+}
+
+.login_or_sign_container {
+    min-height: 75vh;
+    border: 1px #d3d3d3 solid;
+    border-radius: 5px;
+}

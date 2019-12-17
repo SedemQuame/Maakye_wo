@@ -8,8 +8,6 @@ const bcrypt = require('bcrypt');
 // custom models
 const user = require('../models/users.models');
 const SALT_ROUNDS = 12;
-console.log(process.env.SALT_ROUNDS);
-
 
 //================================== creating HTTP handler methods ==================================//
 // create new user
@@ -34,7 +32,7 @@ exports.createUser = (req, res) => {
             console.log('spinning user account ... 🥱🥱🥱');
             console.log('user not created ... 😪🙄😣');
             console.log('redirecting user .../');
-            res.redirect('/users');
+            res.redirect('/user_signup');
         });
     });
 
@@ -74,7 +72,7 @@ exports.login = (req, res) => {
             } else {
                 console.log('account not found ... 🥱🥱🥱');
                 console.log('redirecting user .../');
-                res.redirect('/users');
+                res.redirect('/user_login');
             }
         });
     }).catch((err) => {

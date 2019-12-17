@@ -1,0 +1,1 @@
+ways for determine vehicle speed:	https://www.researchgate.net/post/How_do_I_detect_the_speed_of_a_car_with_opencv_and_python

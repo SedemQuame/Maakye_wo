@@ -4,9 +4,14 @@ module.exports = app => {
     const user = require('./../controllers/users.controller');
 
     //========================================== app users routes ============================================//
-    app.route('/users')
+    app.route('/user_login')
         .get((req, res) => {
-            res.render(__dirname + './../views/login_signup.views.ejs');
+            res.render(__dirname + './../views/login.views.ejs');
+        });
+
+    app.route('/user_signup')
+        .get((req, res) => {
+            res.render(__dirname + './../views/signup.views.ejs');
         });
 
     // signup route
