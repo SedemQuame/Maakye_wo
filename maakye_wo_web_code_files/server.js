@@ -40,8 +40,9 @@ mongoose.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true });
 require('./routes/roads.routes')(app);
 require('./routes/users.routes')(app);
 require('./routes/videos.routes')(app);
-require('./routes/vehicles.routers')(app);
+require('./routes/violators.routers')(app);
 require('./routes/dashboard.routes')(app);
+require('./routes/admin.routes')(app);
 
 
 // ========================================== app routes ============================================ //

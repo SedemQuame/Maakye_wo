@@ -6,7 +6,7 @@ module.exports = app => {
     //========================================== app users routes ============================================//
     app.route('/users')
         .get((req, res) => {
-            res.render(__dirname + './../public/views/login_signup.views.ejs');
+            res.render(__dirname + './../views/login_signup.views.ejs');
         });
 
     // signup route
