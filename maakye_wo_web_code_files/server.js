@@ -29,10 +29,19 @@ app.use(bodyParser.json());
 
 // serving static files in express
 app.use(express.static('public'));
+// app.use(express.static('views'));
 
 
 // ====================================== db configurations ========================================= //
 mongoose.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true });
+
+
+//====================================== requiring list routes ========================================//
+require('./routes/roads.routes')(app);
+require('./routes/users.routes')(app);
+require('./routes/videos.routes')(app);
+require('./routes/vehicles.routers')(app);
+require('./routes/dashboard.routes')(app);
 
 
 // ========================================== app routes ============================================ //
@@ -43,14 +52,6 @@ app.get('/', (req, res) => {
     // useful for rendering views in browser
     res.redirect('/users');
 });
-
-//====================================== requiring list routes ========================================//
-require('./routes/roads.routes')(app);
-require('./routes/users.routes')(app);
-require('./routes/videos.routes')(app);
-require('./routes/vehicles.routers')(app);
-require('./routes/dashboard.routes')(app);
-
 
 // ====================================== app listening port ======================================== //
 let port = 8080;

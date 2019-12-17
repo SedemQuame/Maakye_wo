@@ -1,0 +1,39 @@
+#video_pane {
+    border: 1px solid #d3d3d3;
+    height: 85vh;
+}
+
+#street_info_pane {
+    border: 1px solid #d3d3d3;
+    min-height: 20vh;
+}
+
+#road_info_pane {
+    border: 1px solid #d3d3d3;
+    min-height: 20vh;
+}
+
+#list_pane {
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.sm-nav-widget {
+    position: absolute;
+    top: 15vh;
+    background-color: #d3d3d3;
+    height: 80vh;
+    border-radius: 5px;
+}
+
+.sm-nav-right {
+    right: 0;
+}
+
+.sm-nav-left {
+    left: 0;
+}
+
+.info_pane {
+    margin: 2vh 0;
+}

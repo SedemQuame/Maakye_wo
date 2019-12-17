@@ -1,0 +1,63 @@
+<%- include('./partials/header.ejs');-%>
+    <%- include('./partials/nav.ejs');-%>
+        <p>login_signup_page &lt; normal_user &gt;</p>
+        <!-- login and signup portion -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h1 class="text-left">Login</h1>
+                    <p class="text-left">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <!-- login forms -->
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                            <label for="">Email address</label>
+                            <input type="text" class="form-control" name="email_address">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="text" class="form-control" name="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="submit" class="btn btn-outline-dark btn-block">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h1 class="text-left">Sign Up</h1>
+                    <p class="text-left">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <!-- sign up forms -->
+                    <form action="/signup" method="POST">
+                        <div class="form-group"><label for="">Full name</label><input type="text" class="form-control" name="full_name"></div>
+                        <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="email_address"></div>
+                        <div class="form-group"><label for="">Phone number</label><input type="text" class="form-control" name="phone_number"></div>
+                        <div class="form-group"><label for="">Password</label><input type="text" class="form-control" name="password"></div>
+                        <div class="form-group"><label for="">Confirm password</label><input type="text" class="form-control"></div>
+                        <div class="form-group"><label for="">Driver's license id</label><input type="text" class="form-control" name="drivers_license_id"></div>
+                        <div class="form-group">
+                            <input type="submit" value="submit" class="btn btn-outline-dark btn-block">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <h1 class="text-center">Social Logins</h1>
+                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <div class="row">
+                    <div class="col-12 col-md-6 text-center">
+                        <p>facebook</p class="text-center">
+                        <button class="btn btn-outline-dark">facebook</button>
+                    </div>
+                    <div class="col-12 col-md-6 text-center">
+                        <p>google</p>
+                        <button class="btn btn-outline-dark">Google</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('./partials/footer'); -%>

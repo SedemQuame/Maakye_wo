@@ -6,6 +6,6 @@ module.exports = app => {
     //========================================== app dashboard routes ============================================//
     app.route('/dashboard')
         .get((req, res) => {
-            res.render(__dirname + './../views/dashboard.views.ejs');
+            res.render(__dirname + './../public/views/dashboard.views.ejs');
         });
 };
