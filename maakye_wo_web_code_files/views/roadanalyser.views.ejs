@@ -1,23 +1,24 @@
 <%- include('./partials/header.ejs');-%>
     <%- include('./partials/nav.ejs');-%>
-        <div class="container">
-            <!-- <p>road_analyser &lt; user_limited, admin(s)_full &gt;</p>
+        <!-- <p>road_analyser &lt; user_limited, admin(s)_full &gt;</p>
             <p>road analyzer &lt; (current view, shows admin options, normal users will only see videos that relate to them.) &gt;</p> -->
-            <div class="row">
-                <div class="col-12 col-lg-10" id="video_pane">
-                    <video src="#"></video>
-                </div>
+        <div class="row">
+            <div class="col-12 col-lg-10" id="video_pane">
+                <video src="#"></video>
+            </div>
 
-                <div class="col-6 col-lg-2 d-none d-lg-block" id="list_pane">
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">Camera list</a>
-                        <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Where the Wild Things Are</a>
-                        <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">One Hundred Years of Solitude</a>
-                        <a class="list-group-item list-group-item-action" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">The Little Prince</a>
-                        <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Where the Wild Things Are</a>
-                        <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">One Hundred Years of Solitude</a>
-                    </div>
+            <div class="col-6 col-lg-2 d-none d-lg-block" id="list_pane">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">Camera list</a>
+                    <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Where the Wild Things Are</a>
+                    <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">One Hundred Years of Solitude</a>
+                    <a class="list-group-item list-group-item-action" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">The Little Prince</a>
+                    <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Where the Wild Things Are</a>
+                    <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">One Hundred Years of Solitude</a>
                 </div>
+            </div>
+
+            <div class="container">
 
                 <div class="col-12 col-lg-10 info_pane" id="street_info_pane">
                     <h1>&lt; Street name, and camera #n &gt;</h1>

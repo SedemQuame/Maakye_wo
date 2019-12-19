@@ -39,11 +39,32 @@
 }
 
 .file_upload_pane {
-    max-height: 35vh;
-    min-height: 35vh;
+    max-height: 30vh;
+    min-height: 30vh;
     overflow-y: auto;
-    border: 1px solid #d3d3d3;
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.dashboard_img_div {
+    max-height: 25vh;
+    min-height: 25vh;
+    text-align: center;
+}
+
+.dashboard_img {
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.uploaded_vehicle_img {}
+
+.uploaded_vehicle_img_list_item {
+    list-style: none;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px 0;
 }
