@@ -37,3 +37,13 @@
 .info_pane {
     margin: 2vh 0;
 }
+
+.file_upload_pane {
+    max-height: 35vh;
+    min-height: 35vh;
+    overflow-y: auto;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

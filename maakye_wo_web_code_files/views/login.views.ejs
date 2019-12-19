@@ -11,17 +11,9 @@
                     </p>
                     <!-- login forms -->
                     <form action="/login" method="POST">
-                        <div class="form-group">
-                            <label for="">Email address</label>
-                            <input type="text" class="form-control" name="email_address">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Password</label>
-                            <input type="text" class="form-control" name="password">
-                        </div>
-                        <div class="form-group">
-                            <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
-                        </div>
+                        <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="email_address"></div>
+                        <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password"></div>
+                        <div class="form-group"><input type="Submit" value="Submit" class="btn btn-outline-dark btn-block"></div>
                     </form>
                     <!-- show signup button -->
                     <p class="text-center">
@@ -35,27 +27,8 @@
 
         </div>
 
-        <hr>
-
         <div class="container">
-
-            <div class="row">
-                <div class="col-12 offset-md-3 col-md-6 offset-md-3">
-                    <h1 class="text-center">Social Logins</h1>
-                    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <div class="row">
-                        <div class="col-12 col-md-6 text-center">
-                            <p>facebook</p class="text-center">
-                            <button class="btn btn-outline-dark">facebook</button>
-                        </div>
-                        <div class="col-12 col-md-6 text-center">
-                            <p>google</p>
-                            <button class="btn btn-outline-dark">Google</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <hr>
         </div>
-        <%- include('./partials/footer'); -%>
+        <%- include('./partials/social_login'); -%>
+            <%- include('./partials/footer'); -%>

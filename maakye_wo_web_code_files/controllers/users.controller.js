@@ -3,10 +3,19 @@ require('dotenv').config({ path: __dirname + './../.env' });
 
 //====================================== requiring modules ===========================================//
 // node modules
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
+const passport = require('passport');
+
 
 // custom models
 const user = require('../models/users.models');
+
+// use static authenticate method of model in LocalStrategy
+passport.use(user.createStrategy());
+
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
+
 const SALT_ROUNDS = 12;
 
 //================================== creating HTTP handler methods ==================================//
@@ -35,7 +44,6 @@ exports.createUser = (req, res) => {
             res.redirect('/user_signup');
         });
     });
-
 };
 
 // read user data
@@ -58,13 +66,8 @@ exports.login = (req, res) => {
     // nothing at the moment.
     user_to_login = user.where({ email_address: req.body.email_address });
     user_to_login.findOne().then((returnedUser) => {
-        console.log(returnedUser);
-        console.log(returnedUser.password);
-        console.log(req.body.password);
         // Load hash from your password DB.
         bcrypt.compare(req.body.password, returnedUser.password).then(function(response) {
-            console.log(response);
-
             if (response == true) {
                 console.log('redirecting user .../');
                 console.log('account found ... 😎😎😎');
@@ -79,7 +82,6 @@ exports.login = (req, res) => {
         console.log('sorry, a serious error occurred ... 😪🙄😣');
         console.log('redirecting user .../');
         console.log(err);
-
-        res.redirect('/users');
+        res.redirect('/user_login');
     });
 };

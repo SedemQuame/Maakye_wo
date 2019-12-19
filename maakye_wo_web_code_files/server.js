@@ -11,7 +11,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const session = require('express-session');
+const passport = require('passport');
 
 // custom modules
 const db = require('./config/db.config');
@@ -31,9 +32,20 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 // app.use(express.static('views'));
 
+// adding sessions to express
+app.use(session({
+    secret: 'some_random_keyboard_String',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
+
+app.use(passport.initialize());
+
 
 // ====================================== db configurations ========================================= //
 mongoose.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 
 
 //====================================== requiring list routes ========================================//

@@ -1,10 +1,11 @@
 //jshint esversion:6
 // ===================================== requiring node modules ===================================== //
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 
 // ==================================== creating database schema=======================================//
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     full_name: { type: String },
     password: { type: String },
     user_type: { type: String, default: 'normal' },
@@ -15,6 +16,8 @@ const userSchema = mongoose.Schema({
     drivers_license: { type: String },
     owned_vehicles: [{ type: String }]
 });
+
+userSchema.plugin(passportLocalMongoose);
 
 // ==================================== creating schema model =========================================//
 module.exports = mongoose.model('user', userSchema);
