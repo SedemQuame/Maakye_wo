@@ -1,3 +1,6 @@
 /node_modules
 .env
 public/videos
+.idea
+dlib-19.6.zip
+opencv-speed-detector.zip
