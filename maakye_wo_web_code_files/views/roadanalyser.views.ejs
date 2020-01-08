@@ -1,119 +1,119 @@
 <%- include('./partials/header.ejs');-%>
     <%- include('./partials/nav.ejs');-%>
-        <!-- <p>road_analyser &lt; user_limited, admin(s)_full &gt;</p>
-            <p>road analyzer &lt; (current view, shows admin options, normal users will only see videos that relate to them.) &gt;</p> -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1 text-center" id="commands_one">
+                    <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="btn btn-outline-dark active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" data-toggle="tooltip" data-placement="right" title="Road Survelliance">
+                            <img class="vertical_bar_btn" src="img/video.svg" alt="info">
+                        </a>
+                        <a class="btn btn-outline-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Road information">
+                            <img class="vertical_bar_btn" src="img/information.svg" alt="info">
+                        </a>
+                        <a class="btn btn-outline-dark" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Street Map View">
+                            <img class="vertical_bar_btn" src="img/cctv.svg" alt="info">
+                        </a>
+                        <a class="btn btn-outline-dark" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Street Analytics">
+                            <img class="vertical_bar_btn" src="img/analytics.svg" alt="info">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <video class="col-12" id="video_pane" src="video/detection.mp4"></video>
+
+                        <div class="col-12" id="street_info_pane">
+                            <h1 class="header_styling">&lt; Street name, and camera #n &gt;</h1>
+                            <p class="">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <h1 class="header_styling">&lt; Road Analytics &gt;</h1>
+                        <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h1 class="subheader_styling">&lt; Road Information &gt;</h1>
+                        <table class="table table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="row">Paramter</th scope="row">
+                                    <th scope="row">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Temperature</td>
+                                    <td>temp</td>
+                                </tr>
+                                <tr>
+                                    <td>Traffick Status</td>
+                                    <td>status</td>
+                                </tr>
+                                <tr>
+                                    <td>Road Type</td>
+                                    <td>tarred/untarred</td>
+                                </tr>
+                                <tr>
+                                    <td>Road Score</td>
+                                    <td>[1-10]</td>
+                                </tr>
+                                <tr>
+                                    <td>Average Cars Per Day</td>
+                                    <td>integer n</td>
+                                </tr>
+                                <tr>
+                                    <td>Allowable Speed Range</td>
+                                    <td>n (MpH)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <h1 class="subheader_styling">&lt; Road Accident Statistics &gt;</h1>
+                        <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                Pie Chart
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                Chart Information
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <h1 class="subheader_styling">&lt; Street View &gt;</h1>
+                        <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div id="map-view">
+                            map-view
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-1 justify-content-center" id="commands_two">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="btn btn-outline-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                            <img class="vertical_bar_btn" src="img/security.svg" alt="info">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="row">
-            <div class="col-12 col-lg-10" id="video_pane">
-                <video src="#"></video>
+            <div class="col-12 col-md-4 col-lg-3" id="pane">
+                <h3 class="text-center">
+                    Road List
+                </h3>
+                <hr>
+
             </div>
+        </div>
 
-            <div class="col-6 col-lg-2 d-none d-lg-block" id="list_pane">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">Camera list</a>
-                    <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Where the Wild Things Are</a>
-                    <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">One Hundred Years of Solitude</a>
-                    <a class="list-group-item list-group-item-action" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">The Little Prince</a>
-                    <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Where the Wild Things Are</a>
-                    <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">One Hundred Years of Solitude</a>
-                </div>
-            </div>
-
-            <div class="container">
-
-                <div class="col-12 col-lg-10 info_pane" id="street_info_pane">
-                    <h1>&lt; Street name, and camera #n &gt;</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div class="col-12 col-lg-10 info_pane" id="road_info_pane">
-                    <h1>&lt; Road Analytics &gt;</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                    <h2>&lt; Road Information &gt;</h2>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="row">Paramter</th scope="row">
-                                <th scope="row">Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Temperature</td>
-                                <td>temp</td>
-                            </tr>
-                            <tr>
-                                <td>Traffick Status</td>
-                                <td>status</td>
-                            </tr>
-                            <tr>
-                                <td>Road Type</td>
-                                <td>tarred/untarred</td>
-                            </tr>
-                            <tr>
-                                <td>Road Score</td>
-                                <td>[1-10]</td>
-                            </tr>
-                            <tr>
-                                <td>Average Cars Per Day</td>
-                                <td>integer n</td>
-                            </tr>
-                            <tr>
-                                <td>Allowable Speed Range</td>
-                                <td>n (MpH)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <h2>&lt; Road Accident Statistics &gt;</h2>
-                    <div class="row">
-                        <div class="col-12 col-sm-4">
-                            Pie Chart
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            Chart Information
-                        </div>
-                    </div>
-
-                    <h2>&lt; Street View &gt;</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <div id="map-view">
-                        map-view
-                    </div>
-
-                </div>
-            </div>
-
-            <ul class="nav flex-column d-block d-lg-none sm-nav-widget sm-nav-right">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-
-            <ul class="nav flex-column d-block d-lg-none sm-nav-widget sm-nav-left">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
         </div>
 
 

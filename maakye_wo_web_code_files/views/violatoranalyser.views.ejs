@@ -1,97 +1,95 @@
 <%- include('./partials/header.ejs');-%>
     <%- include('./partials/nav.ejs');-%>
         <!-- <p>violator_analytics &lt; admin &gt;</p> -->
-        <div class="row">
-            <div class="col-12 col-lg-10" id="video_pane">
-                <video src="#"></video>
-            </div>
 
-            <div class="col-6 col-lg-2 d-none d-lg-block" id="list_pane">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">Violator(s) list</a>
-                    <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Violator #1</a>
-                    <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">Violator #2</a>
-                    <a class="list-group-item list-group-item-action" id="list-prince-list" data-toggle="list" href="#list-prince" role="tab" aria-controls="prince">Violator #3</a>
-                    <a class="list-group-item list-group-item-action" id="list-wild-list" data-toggle="list" href="#list-wild" role="tab" aria-controls="wild">Violator #4</a>
-                    <a class="list-group-item list-group-item-action" id="list-solitude-list" data-toggle="list" href="#list-solitude" role="tab" aria-controls="messages">Violator #5</a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-1 text-center" id="commands_one">
+                    <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="btn btn-outline-dark active" id="v-pills-violator-video-tab" data-toggle="pill" href="#v-pills-violator-video" role="tab" aria-controls="v-pills-home" aria-selected="true" data-toggle="tooltip" data-placement="right" title="Recorded Violator Video">
+                            <img class="vertical_bar_btn" src="img/video.svg" alt="info">
+                        </a>
+                        <a class="btn btn-outline-dark" id="v-pills-violator-info-tab" data-toggle="pill" href="#v-pills-violator-info" role="tab" aria-controls="v-pills-profile" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Violator Information">
+                            <img class="vertical_bar_btn" src="img/information.svg" alt="info">
+                        </a>
+                        <a class="btn btn-outline-dark" id="v-pills-violator-admin-tab" data-toggle="pill" href="#v-pills-violator-admin" role="tab" aria-controls="v-pills-settings" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Administrative Action">
+                            <img class="vertical_bar_btn" src="img/admin.svg" alt="info">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="container">
 
-                <div class="col-12 col-lg-10 info_pane" id="street_info_pane">
-                    <h1>&lt; Violaotoe's Information Pane &gt;</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                    <h2>Information of Registered Driver</h2>
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="" alt="profile_img">
+                <div class="col-12 col-md-10">
+                    <div class="tab-pane fade show active" id="v-pills-violator-video" role="tabpanel" aria-labelledby="v-pills-violator-video-tab">
+                        <video class="col-12" id="video_pane" src="#"></video>
+
+                        <div class="col-12" id="street_info_pane">
+                            <h1 class="header_styling">&lt; Violator's Information Pane &gt;</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
                         </div>
-                        <div class="col-9">
-                            <p>Driver Name: </p>
-                            <p>Nationality: </p>
-                            <p>Driver Score: </p>
-                            <p>Number of Recored Violations: </p>
+                    </div>
+
+                    <div class="tab-pane fade other-panes" id="v-pills-violator-info" role="tabpanel" aria-labelledby="v-pills-violator-info-tab">
+                        <h1 class="header_styling">Information of Registered Driver</h1>
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="violator_image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEVjZWJW3dc1AAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC" alt="profile_img">
+                                <p>Driver Name: </p>
+                            </div>
+                            <div class="col-9">
+                                <p>Nationality: </p>
+                                <p>Driver Score: </p>
+                                <p>Number of Recored Violations: </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade other-panes" id="v-pills-violator-admin" role="tabpanel" aria-labelledby="v-pills-violator-admin-tab">
+                        <h1 class="header_styling">&lt; Administrative Actions &gt; (visibility off, for if (user != adminClass))</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        <h2 class="header_styling">&lt; Road Information &gt;</h2 class="header_styling">
+                        <div class="row">
+                            <div class="col-12 col-md-6 administrative_user_block">
+                                Issue Charge Back (*optional feature*)
+                                <p>Click to issue charge back</p>
+                                <button class="btn btn-outline-dark btn-block">Charge</button>
+                            </div>
+                            <div class="col-12 col-md-6 administrative_user_block">
+                                Vehcile Flagging (*needed feature*)
+                                <p>Click to toggle between flagging an unflagging</p>
+                                <button class="btn btn-outline-dark btn-block">Flag</button>
+                            </div>
+                            <div class="col-12 col-md-6 administrative_user_block">
+                                Suspend Driver's License (*needed feature*)
+                                <p>Click to toggle between suspending driver's license and unsuspending license</p>
+                                <button class="btn btn-outline-dark btn-block">Suspend</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-10 info_pane" id="road_info_pane">
-                    <h1>&lt; Administrative Actions &gt; (visibility off, for if (user != adminClass))</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                    <h2>&lt; Road Information &gt;</h2>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            Issue Charge Back (*optional feature*)
-                            <p>Click to issue charge back</p>
-                            <button class="btn btn-outline-dark btn-block">Charge</button>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            Vehcile Flagging (*needed feature*)
-                            <p>Click to toggle between flagging an unflagging</p>
-                            <button class="btn btn-outline-dark btn-block">Flag</button>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            Suspend Driver's License (*needed feature*)
-                            <p>Click to toggle between suspending driver's license and unsuspending license</p>
-                            <button class="btn btn-outline-dark btn-block">Suspend</button>
-                        </div>
+                <div class="col-12 col-md-1" id="commands_two">
+                    <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="btn btn-outline-dark" id="v-pills-violator-list">
+                            <img class="vertical_bar_btn" src="img/speedometer.svg" alt="info">
+                        </button>
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-3" id="pane">
+                    <h3 class="text-center">
+                        Violators List
+                    </h3>
+                    <hr>
 
                 </div>
             </div>
 
-            <ul class="nav flex-column d-block d-lg-none sm-nav-widget sm-nav-right">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-
-            <ul class="nav flex-column d-block d-lg-none sm-nav-widget sm-nav-left">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
         </div>
+
 
         <%- include('./partials/footer'); -%>

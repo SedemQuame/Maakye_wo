@@ -3,7 +3,7 @@ require('dotenv').config({ path: __dirname + './../.env' });
 
 //====================================== requiring modules ===========================================//
 // node modules
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 
@@ -20,7 +20,7 @@ const SALT_ROUNDS = 12;
 
 //================================== creating HTTP handler methods ==================================//
 // create new user
-exports.createUser = (req, res) => {
+exports.createUser = (req, res) => {   
     bcrypt.hash(req.body.password, SALT_ROUNDS, function(err, hash) {
         // Store hash in your password DB.
         user.create({

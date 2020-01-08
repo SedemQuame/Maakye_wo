@@ -3,3 +3,39 @@ body {
     margin: 0;
     padding: 0;
 }
+
+p,
+td,
+th,
+div {
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+}
+
+.header_styling {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.subheader_styling {
+    font-size: 18px;
+}
+
+.administrative_user_block {
+    margin: 10px;
+}
+
+.violator_image {
+    height: 90%;
+    width: 90%;
+}
+
+
+/* =========================== small screen =========================== */
+
+@media only screen and (max-width: 768px) {
+    #commands_one,
+    #commands_two {
+        max-height: 25vh;
+    }
+}

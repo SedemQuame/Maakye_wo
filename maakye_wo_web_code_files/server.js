@@ -44,9 +44,14 @@ app.use(passport.initialize());
 
 
 // ====================================== db configurations ========================================= //
-mongoose.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true });
-mongoose.set('useCreateIndex', true);
+mongoose.Promise = global.Promise;
 
+const connectDB = async () => {
+    mongoose.connect(db.url, db.options);
+    console.log('DB Connected....');
+};
+
+connectDB();
 
 //====================================== requiring list routes ========================================//
 require('./routes/roads.routes')(app);
