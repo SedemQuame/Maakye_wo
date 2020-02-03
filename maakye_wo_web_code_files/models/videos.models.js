@@ -7,7 +7,9 @@ const mongoose = require('mongoose');
 const videoSchema = mongoose.Schema({
     file_name: { type: String },
     video_url: { type: String },
-    date_create: { type: String }
+    duration: { type: String },
+    date_create: { type: String },
+    time_created: { type: String }
 });
 
 // ==================================== creating schema model =========================================//

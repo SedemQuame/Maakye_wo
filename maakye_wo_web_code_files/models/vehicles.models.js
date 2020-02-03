@@ -8,7 +8,7 @@ const vehicleSchema = mongoose.Schema({
     license_number: { type: String },
     vin_number: { type: String },
     vehicle_color: { type: String },
-    vehicle_tpye: { type: String },
+    vehicle_type: { type: String },
     driver_id: { type: String },
 });
 

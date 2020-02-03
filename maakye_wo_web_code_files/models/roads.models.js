@@ -11,7 +11,6 @@ const roadSchema = mongoose.Schema({
     road_type: { type: String },
     daily_temp: { type: String },
     daily_humidity: { type: String },
-    street_location: { type: String },
     avg_vehicle_count: { type: String },
     number_of_accidents: { type: String },
     camera_ids: { type: String }

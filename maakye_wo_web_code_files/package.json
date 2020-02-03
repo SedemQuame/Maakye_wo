@@ -13,10 +13,13 @@
         "ejs": "^3.0.1",
         "express": "^4.17.1",
         "express-session": "^1.17.0",
+        "firebase": "^7.6.1",
+        "firebaseui": "^4.4.0",
         "mongoose": "^5.8.1",
         "passport": "^0.4.1",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^5.0.1",
+        "require": "^2.4.20",
         "video.js": "^7.6.6"
     },
     "devDependencies": {},

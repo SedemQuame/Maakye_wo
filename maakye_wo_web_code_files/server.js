@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
 });
 
 // ====================================== app listening port ======================================== //
-let port = 8080;
+let port = process.env.PORT||8080;
 app.listen(port, function() {
     console.log(`app started on port: ${port}`);
 });
