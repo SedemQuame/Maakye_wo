@@ -1,3 +1,6 @@
 /node_modules
 .env
 maakye_wo_embedded_code_files.zip
+maakye_wo_web_code_files\package-lock.json
+maakye_wo_web_code_files\.env
+
