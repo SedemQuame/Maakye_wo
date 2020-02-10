@@ -1,1 +1,24 @@
 ways for determine vehicle speed:	https://www.researchgate.net/post/How_do_I_detect_the_speed_of_a_car_with_opencv_and_python
+
+Getting started with the Camera Module (Raspberry Pi Configuration To Use Pi)
+=========================================================================================
+https://projects.raspberrypi.org/en/projects/getting-started-with-picamera
+https://raspberrypi.stackexchange.com/questions/23182/how-to-stream-video-from-raspberry-pi-camera-and-watch-it-live/32521#32521
+https://thepihut.com/blogs/raspberry-pi-tutorials/16021420-how-to-install-use-the-raspberry-pi-camera
+https://tutorials-raspberrypi.com/raspberry-pi-security-camera-livestream-setup/
+https://www.raspberrypi.org/documentation/configuration/camera.md
+https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/8
+
+
+Installing dlib library
+=========================
+https://www.learnopencv.com/install-dlib-on-windows/
+https://github.com/Greenwolf/social_mapper/issues/25
+
+
+Uploading and Downloading Static Images To/From DropBox.
+========================================================
+https://www.dropbox.com/developers
+https://stackoverflow.com/questions/23894221/upload-file-to-my-dropbox-from-python-script
+https://gist.github.com/Keshava11/d14db1e22765e8de2670b8976f3c7efb
+https://www.dropbox.com/developers-v1/core/start/python
