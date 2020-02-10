@@ -1,8 +1,11 @@
-/node_modules
-.env
-maakye_wo_embedded_code_files.zip
+maakye_wo_web_code_files\node_modules.env
 maakye_wo_web_code_files\package-lock.json
 maakye_wo_web_code_files\.env
+maakye_wo_web_code_files\node_modules
+maakye_wo_embedded_code_files\__pycache__
+maakye_wo_web_code_files\config
+mockup
+system requirements docs
 /sample_data
 /__pycache__
 keys.py
