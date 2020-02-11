@@ -178,8 +178,8 @@ class SpeedEstimator:
         path = "/{}.jpg".format(imageID)
         # client.files_upload(open(tempFile.path, "rb").read(), path)
         # infoUploader.app(self.keys, tempFile.path).main()
-        bundler.app(self.keys, path).main()
-
+        # bundler.app(self.keys, path).main()
+        bundler.app(self.keys, tempFile.path).main()
         # app(self.keys, open(tempFile.path, "rb").read()).main()
         tempFile.cleanup()
 

@@ -11,19 +11,20 @@ import keys
 import pymongo
 import pprint
 import uploader
+import licensePlateExtractor as licensePlate
 from datetime import datetime
 
 
 class app:
-    def __init__(self, keys, video_url):
+    def __init__(self, keys, asset_url):
         print("Application started")
         self.keys = keys
-        self.video_local_url = video_url
+        self.video_local_url = asset_url
 
     def mongoDbConnection(self):
         try:
-            # client = pymongo.MongoClient(json.loads(keys.json_string)["MONGO_URL"])
-            client = pymongo.MongoClient(json.loads(keys.json_string)["TEST_URL"])
+            client = pymongo.MongoClient(json.loads(keys.json_string)["MONGO_URL"])
+            # client = pymongo.MongoClient(json.loads(keys.json_string)["TEST_URL"])
             # Creating a database collection
             self.db = client.test
             print('MONGOCLIENT CONNECTION SUCCESSFUL.')
@@ -39,8 +40,8 @@ class app:
         # sample recordedVideos information that will be passed into the database.
         uploadedVideo = {
             'file_name': response["public_id"],
-            'video_url': response["url"],
-            'duration': response["duration"],
+            'asset_url': response["url"],
+            # 'duration': response["duration"],
             'format': response["format"],
             'date_created': str(datetime.date(datetime.now())),
             'time_created': str(datetime.time(datetime.now()))
@@ -49,18 +50,21 @@ class app:
         if result.acknowledged:
             print("Successfully, stored vehicle data into database.")
             print("Video id: " + str(result.inserted_id))
+            # getting license plate number
+            response = licensePlate.Extractor(response["url"]).ocrExtractor()
+            plateNumbers = response["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
             # storing video data.
-            self.storeVehicleData(result.inserted_id)
+            self.storeVehicleData(result.inserted_id, plateNumbers)
             # storing road data.
             self.storeRoadData(result.inserted_id)
         else:
             print("Failed, to store vehicle data into database.")
 
-    def storeVehicleData(self, storedVideoId):
+    def storeVehicleData(self, storedVideoId, plateNumbers):
         vehicles = self.db.vehicles
         # sample vehicle information that will be passed into the database.
         vehicle = {
-            'license': "EUS6asd7",                          # This field, will pass the license number of the violator.
+            'license': plateNumbers or "none",                        # This field, will pass the license number of the violator.
             'vin_number': "1FwPCSZB7XPA16487",              # This field, will pass the vin number that was extracted if it exists.
             'color': "Blue",                                # This field, will pass the recorded color.
             'model': "Toyota Land Cruiser",                 # This field, will pass the data on the car model
@@ -104,9 +108,13 @@ class app:
         self.mongoDbConnection()
         self.storeVideoData(response)
 
+        # cleaning up object from thread pool.
+        del uploaderObj
+        del self 
+
 # caliing the main function.
-# video_url = "sample_data/cars1.mp4"
-# app(keys, video_url).main()
+# asset_url = "license_plates/asset1.png"
+# app(keys, asset_url).main()
 
 # Possible Exceptions
 # 1. ValueError

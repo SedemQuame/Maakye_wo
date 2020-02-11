@@ -27,12 +27,12 @@ class Extractor:
                 response = cloudinary.uploader.upload(self.imageSrc, ocr = "adv_ocr")
                 # print(response)
                 return response
-        
+                        
 # creating object, using plat extractor class.
 
-numberPlate = Extractor("license_plates\images (2).jfif")
-obj = numberPlate.ocrExtractor()
+# numberPlate = Extractor("license_plates\images (2).jfif")
+# obj = numberPlate.ocrExtractor()
 
-# Getting the license plate, numbers.
-licensePlateText = obj["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
-print(licensePlateText)
+# # Getting the license plate, numbers.
+# licensePlateText = obj["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
+# print(licensePlateText)

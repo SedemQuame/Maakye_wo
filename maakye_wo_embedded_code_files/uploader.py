@@ -17,9 +17,9 @@ import pprint
 
 
 class assetUploader:
-    def __init__(self, keys, video_url):
+    def __init__(self, keys, asset_url):
         self.keys = keys
-        self.asset_url = video_url
+        self.asset_url = asset_url
         print("INNIT FUNCTION")
     
     def generateUUID(self):
@@ -40,15 +40,16 @@ class assetUploader:
         print("GETTING A RESPONSE")
 
         response =  cloudinary.uploader.upload_large(self.asset_url, 
-                    resource_type = "video",
+                    resource_type = "image",
                     public_id = "maakye_wo/" + uuid,
                     chunk_size = 6000000,
                     eager = [
                         { "width": 300, "height": 300, "crop": "pad", "audio_codec": "none"},
                         { "width": 160, "height": 100, "crop": "crop", "gravity": "south",
                             "audio_codec": "none"}],
-                    eager_async = True,
-                    eager_notification_url = "https://mysite.example.com/notify_endpoint")
+                    # eager_async = True,
+                    # eager_notification_url = "https://mysite.example.com/notify_endpoint"
+                    )
         print("File uploaded successfully.")
         return(response)
 
