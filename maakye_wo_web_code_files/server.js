@@ -13,6 +13,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
+const fs = require('fs');
+
 
 // custom modules
 const db = require('./config/db.config');
@@ -21,6 +23,12 @@ const db = require('./config/db.config');
 // ================================== express app configurations ==================================== //
 //creating app
 const app = express();
+
+// creating video routes
+const router = express.Router();
+
+// passing router to app
+app.use(router);
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,6 +60,80 @@ const connectDB = async () => {
 };
 
 connectDB();
+
+const assets = 'public/videos';
+const videName = 'detection'; // without extension
+
+// router.get('/', (req, res) => {
+
+//     fs.access(assets+'/images/'+videName+'.jpg', fs.F_OK, (err) => {
+        
+//         if (err) {
+//             exec(`bin/ffmpeg -i ${assets}/${videName}.mp4 -ss 00:00:04.00 -r 1 -an -vframes 1 -f mjpeg ${assets}/images/${videName}.jpg`, (error, stdout, stderr) => {
+//                 if (error) {
+//                     return;
+//                 }
+    
+//                 res.render('index', {
+//                     image: `/assets/images/${videName}.jpg`
+//                 });
+//             });
+//         }
+
+//         if(err === null) {
+//             res.render('index', {
+//                 image: `/assets/images/${videName}.jpg`
+//             });
+//         }
+//     });
+// });
+
+// using route to stream videos.
+router.get('/video', (req, res) => {
+
+    // const path = `/video/detection.mp4`;
+    const path = `${assets}/${videName}.mp4`;
+
+    fs.stat(path, (err, stat) => {
+
+        // Handle file not found
+        if (err !== null && err.code === 'ENOENT') {
+            res.sendStatus(404);
+        }
+
+        const fileSize = stat.size;
+        const range = req.headers.range;
+
+        if (range) {
+
+            const parts = range.replace(/bytes=/, "").split("-");
+
+            const start = parseInt(parts[0], 10);
+            const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1;
+            
+            const chunksize = (end-start)+1;
+            const file = fs.createReadStream(path, {start, end});
+            const head = {
+                'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+                'Accept-Ranges': 'bytes',
+                'Content-Length': chunksize,
+                'Content-Type': 'video/mp4',
+            };
+            
+            res.writeHead(206, head);
+            file.pipe(res);
+        } else {
+            const head = {
+                'Content-Length': fileSize,
+                'Content-Type': 'video/mp4',
+            };
+
+            res.writeHead(200, head);
+            fs.createReadStream(path).pipe(res);
+        }
+    });
+});
+
 
 //====================================== requiring list routes ========================================//
 require('./routes/roads.routes')(app);

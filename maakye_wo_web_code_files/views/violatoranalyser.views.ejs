@@ -20,11 +20,15 @@
 
                 <div class="col-12 col-md-10">
                     <div class="tab-pane fade show active" id="v-pills-violator-video" role="tabpanel" aria-labelledby="v-pills-violator-video-tab">
-                        <video class="col-12" id="video_pane" src="#"></video>
+                        <video controls width="100%" class="col-12" id="video_pane" src="/video" type="video/mp4">
+                            ....
+                            ....
+                            Sorry, your browser doesn't support embedded videos.
+                        </video>
 
                         <div class="col-12" id="street_info_pane">
-                            <h1 class="header_styling">&lt; Violator's Information Pane &gt;</h1>
-                            <p>
+                            <h1 class="header_styling"> Violator's Information Pane </h1>
+                            <p class="pane_sub_text">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
                         </div>
@@ -79,13 +83,31 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row violators">
                 <div class="col-12 col-md-4 col-lg-3" id="pane">
                     <h3 class="text-center">
                         Violators List
                     </h3>
                     <hr>
 
+                    <!-- Creating a list of violators -->
+                    <ul class="violator-list">
+                        <li>
+                            <a href="#">Violator #1</a>
+                        </li>
+                        <li>
+                            <a href="#">Violator #2</a>
+                        </li>
+                        <li>
+                            <a href="#">Violator #3</a>
+                        </li>
+                        <li>
+                            <a href="#">Violator #4</a>
+                        </li>
+                        <li>
+                            <a href="#">Violator #5</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
