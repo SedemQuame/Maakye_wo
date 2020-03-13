@@ -93,6 +93,10 @@ map-view {
     background: #1F77B4;
 }
 
+#commands_one {
+    position: static;
+}
+
 
 /* =========================== small screen =========================== */
 

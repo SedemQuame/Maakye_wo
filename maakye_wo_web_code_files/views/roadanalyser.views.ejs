@@ -5,28 +5,27 @@
             <div class="row">
                 <div class="col-1 text-center" id="commands_one">
                     <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="btn btn-outline-dark active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" data-toggle="tooltip" data-placement="right" title="Road Survelliance">
+                        <a class="btn btn-outline-dark active" id="v-pills-home-tab" href="#road_video_pane">
                             <img class="vertical_bar_btn" src="img/video.svg" alt="info">
                         </a>
-                        <a class="btn btn-outline-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Road information">
+                        <a class="btn btn-outline-dark" id="v-pills-profile-tab" href="#road_analytic_pane">
                             <img class="vertical_bar_btn" src="img/information.svg" alt="info">
                         </a>
-                        <a class="btn btn-outline-dark" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Street Map View">
+                        <a class="btn btn-outline-dark" id="v-pills-settings-tab" href="#road_statistics_pane">
                             <img class="vertical_bar_btn" src="img/cctv.svg" alt="info">
                         </a>
-                        <a class="btn btn-outline-dark" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" data-toggle="tooltip" data-placement="right" title="Street Analytics">
+                        <a class="btn btn-outline-dark" id="v-pills-messages-tab" href="#street_view">
                             <img class="vertical_bar_btn" src="img/analytics.svg" alt="info">
                         </a>
                     </div>
                 </div>
-                <div class="col-10">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="col-11">
+                    <div id="road_video_pane">
                         <video controls width="100%" class="col-12" id="video_pane" src="/video" type="video/mp4">
                             ....
                             ....
                             Sorry, your browser doesn't support embedded videos.
                         </video>
-
                         <div class="col-12" id="street_info_pane">
                             <h1 class="header_styling">Chelsea Street, Camera #1 </h1>
                             <p class="pane_sub_text">
@@ -35,7 +34,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div id="road_analytic_pane">
                         <h1 class="header_styling"> Road Analytics </h1>
                         <p class="">
                             This section gives analytics, interpretations, and also communicates meaningful patterns in data. It includes given relevant statistics relating data recorded concerning a given road.
@@ -73,14 +72,16 @@
                         </table>
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div id="road_statistics_pane">
                         <h1 class="header_styling"> Road Statistics </h1>
                         <p class="">
                             This section presents statistical information, on vehicles that were speeding and the various recorded ranges.
                         </p>
                         <div class="row">
                             <div id="pieChart" class="col-12 col-md-6">
-                                <u>Pie Chart</u>
+                                <div class="container-fluid">
+                                    <u>Pie Chart</u>
+                                </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <u>Legend</u>
@@ -105,7 +106,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div id="street_view">
                         <h1 class="header_styling"> Street View </h1>
                         <!-- <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
                         <div id="map-view">
@@ -113,13 +114,6 @@
                         </div>
                     </div>
 
-                </div>
-                <div class="col-1 justify-content-center" id="commands_two">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="btn btn-outline-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                            <img class="vertical_bar_btn" src="img/security.svg" alt="info">
-                        </a>
-                    </div>
                 </div>
             </div>
 
@@ -131,7 +125,6 @@
                     Road List
                 </h3>
                 <hr>
-
             </div>
         </div>
 
@@ -139,13 +132,13 @@
 
         <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
         <script type="text/javascript">
-            var w = 600, //width
-                h = 600, //height
-                r = 200, //radius
+            var w = 300, //width
+                h = 300, //height
+                r = 150, //radius
                 color = d3.scale.category20(); //builtin range of colors
 
             data = [{
-                "label": "0 - 35 Mph",
+                "label": "<35Mph",
                 "value": 16
             }, {
                 "label": "36 - 60 Mph",
@@ -196,6 +189,9 @@
                     d.outerRadius = r;
                     return "translate(" + arc.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
                 })
+                .attr("font-size", "10px")
+                .attr("fill", "white")
+                .attr("font-weight", "bold")
                 .attr("text-anchor", "middle") //center the text on it's origin
                 .text(function(d, i) {
                     return data[i].label;

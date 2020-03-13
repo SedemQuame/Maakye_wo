@@ -3,4 +3,6 @@
 module.exports = app => {
     const video = require('./../controllers/videos.controller');
 
+    app.route('/getAllViolators')
+    .get(video.getAllVideos);
 };
