@@ -51,8 +51,12 @@ class app:
             print("Successfully, stored vehicle data into database.")
             print("Video id: " + str(result.inserted_id))
             # getting license plate number
-            response = licensePlate.Extractor(response["url"]).ocrExtractor()
-            plateNumbers = response["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
+            # response = licensePlate.Extractor(response["url"]).ocrExtractor()
+            # plateNumbers = response["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
+
+            # Test values to save OCR values.
+            plateNumbers = "AAA-001"
+
             # storing video data.
             self.storeVehicleData(result.inserted_id, plateNumbers)
             # storing road data.

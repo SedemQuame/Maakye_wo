@@ -25,7 +25,7 @@ class Extractor:
                 api_secret = json.loads(keys.json_string)["CLOUDINARY_SECRET"]
                 )
                 response = cloudinary.uploader.upload(self.imageSrc, ocr = "adv_ocr")
-                # print(response)
+                pprint.pprint(response)
                 return response
                         
 # creating object, using plat extractor class.

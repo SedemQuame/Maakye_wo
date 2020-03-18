@@ -7,6 +7,7 @@ module.exports = app => {
     app.route('/roads')
         .get((req, res) => {
             res.render(__dirname + './../views/roadanalyser.views.ejs');
-        });
+    });
 
+    app.route('/road_list').get(road.getAllRoads);
 };

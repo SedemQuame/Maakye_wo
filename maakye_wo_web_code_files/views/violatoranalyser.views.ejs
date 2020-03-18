@@ -7,17 +7,17 @@
                 <div class="col-12 col-md-1 text-center" id="commands_one">
                     <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="btn btn-outline-dark active" id="v-pills-violator-video-tab" data-toggle="tooltip" data-placement="right" title="Recorded Violator Video">
-                            <img class="vertical_bar_btn" src="img/video.svg" alt="info">
+                            <img class="vertical_bar_btn" src="/img/video.svg" alt="info">
                         </a>
                         <a class="btn btn-outline-dark" id="v-pills-violator-info-tab" data-toggle="pill" href="#v-pills-violator-info" data-toggle="tooltip" data-placement="right" title="Violator Information">
-                            <img class="vertical_bar_btn" src="img/information.svg" alt="info">
+                            <img class="vertical_bar_btn" src="/img/information.svg" alt="info">
                         </a>
                         <a class="btn btn-outline-dark" id="v-pills-violator-admin-tab" data-toggle="pill" href="#v-pills-violator-admin" data-toggle="tooltip" data-placement="right" title="Administrative Action">
-                            <img class="vertical_bar_btn" src="img/admin.svg" alt="info">
+                            <img class="vertical_bar_btn" src="/img/admin.svg" alt="info">
                         </a>
                         <!-- <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical"> -->
                         <button class="btn btn-outline-dark" id="v-pills-violator-list">
-                                <img class="vertical_bar_btn" src="img/speedometer.svg" alt="info">
+                                <img class="vertical_bar_btn" src="/img/speedometer.svg" alt="info">
                         </button>
                         <!-- </div> -->
                     </div>
@@ -25,18 +25,18 @@
 
                 <div class="col-12 col-md-11">
                     <div class="tab-pane fade show active" id="v-pills-violator-video" role="tabpanel" aria-labelledby="v-pills-violator-video-tab">
-                        <video controls width="100%" class="col-12" id="video_pane" src="/video" type="video/mp4">
-                            ....
-                            ....
-                            Sorry, your browser doesn't support embedded videos.
-                        </video>
-
-                        <div class="col-12" id="street_info_pane">
-                            <h1 class="header_styling"> Violator's Information Pane </h1>
-                            <p class="pane_sub_text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                        </div>
+                        <%if(videoData[0].format != "jpg"){%>
+                            <video controls width="100%" class="col-12" id="video_pane" src="<%= videoData[0].asset_url %>" type="video/mp4"> .... .... Sorry, your browser doesn't support embedded videos.
+                            </video>
+                            <%}else{%>
+                                <img src="<%= videoData[0].asset_url %>" alt="Image">
+                                <%}%>
+                                    <div class="col-12" id="street_info_pane">
+                                        <h1 class="header_styling"> Violator's Information Pane </h1>
+                                        <p class="pane_sub_text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+                                    </div>
                     </div>
 
                     <div id="street_view">

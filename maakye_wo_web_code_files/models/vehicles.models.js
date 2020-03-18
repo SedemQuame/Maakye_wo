@@ -5,11 +5,12 @@ const mongoose = require('mongoose');
 
 // ==================================== creating database schema=======================================//
 const vehicleSchema = mongoose.Schema({
-    license_number: { type: String },
+    license: { type: String },
     vin_number: { type: String },
-    vehicle_color: { type: String },
-    vehicle_type: { type: String },
-    driver_id: { type: String },
+    color: { type: String },
+    model: { type: String },
+    speed: {type: String},
+    video_id: { type: String },
 });
 
 // ==================================== creating schema model =========================================//
