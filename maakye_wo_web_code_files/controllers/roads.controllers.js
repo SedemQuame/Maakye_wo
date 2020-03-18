@@ -6,31 +6,24 @@ const road = require('../models/roads.models');
 //================================== creating HTTP handler methods ==================================//
 exports.getAllRoads = (req, res) => {
     // getting all videos in the database.
-    road.find({}).then(docs => {
-        // console.log(`Video docs: ${docs}`);
-        // docs.forEach(video => {           
-        //     vehicles.find({video_id: video._id}).then(vehicleDoc => {               
-        //         roads.find({video_id: video._id}).then(roadDoc => {
-        //         // getting id for video and using it to package data.
-        //         let violators = [];
-        //         for (let i = 0; i < video.length; i++) {
-        //             let newObj = {};
-        //             newObj.video = video;
-        //             newObj.roadDoc = roadDoc;
-        //             newObj.vehicleDoc = vehicleDoc;
-        //             console.log(newObj);
-        //             violators.push(newObj);
-        //         }
-        //         res.send({docs: violators});
-        //         }).catch(err => {
-        //             res.send({msg: `Error occurred ${err}`});
-        //         });
-        //     }).catch(err => {
-        //         res.send({msg: `Error occurred ${err}`});
-        //     });
-        // });
+
+    // getting page's number.
+    let pageNumber = parseInt(req.query.pageNumber);
+    let pageSize = parseInt(req.query.pageSize);
+    let query = {};
+    
+    // handling event where pageNumber is lesser than or equal to 0.
+    if(pageNumber < 0 || pageNumber == 0){
+        response = {"error" : true,"message" : "invalid page number, should start with 1"};
+        return res.json(response);
+    }
+
+    query.skip = pageSize * (pageNumber - 1);
+    query.limit = pageSize;
+
+    road.find({}, {}, query).then(docs => {
         console.log(docs);
-        res.render(__dirname + './../views/roadlists.views.ejs', {roads: docs});
+        res.render(__dirname + './../views/roadlists.views.ejs', {roads: docs, pageNumber: pageNumber});
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');
         res.send({msg: `Error occurred ${err}`});

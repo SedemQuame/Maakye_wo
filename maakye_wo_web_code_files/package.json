@@ -4,6 +4,7 @@
     "description": "",
     "main": "server.js",
     "directories": {
+        "start": "nodemon server.js",
         "test": "tests"
     },
     "dependencies": {

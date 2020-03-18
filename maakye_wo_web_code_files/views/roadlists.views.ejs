@@ -20,11 +20,12 @@
                 <div class="row listContainer">
                     <div class="col-1">
                         #
-                        <%= i %>
+                        <%= (1+i) %>
                     </div>
                     <div class="col-11">
                         <p>
-                            <%= roads[i].license_number %>
+                            <%= roads[i].street_name %>
+                                <span class="float-right text-muted"> <%= roads[i].speed_range %> </span>
                         </p>
                         <hr>
                         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -34,4 +35,5 @@
                 <%}%>
         </div>
 
-        <%- include('./partials/footer'); -%>
+        <%- include('./partials/paginator'); -%>
+            <%- include('./partials/footer'); -%>

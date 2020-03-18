@@ -8,7 +8,6 @@ const vehicles = require('../models/vehicles.models');
 // getting video data from db
 exports.getVideo = (req, res) => {
     const videoId = req.params.videoId;
-
     // find video using it's id as a unique identifier.
     video.findById(videoId)
         .then(returnedVideo => {
@@ -32,10 +31,24 @@ exports.getVideo = (req, res) => {
 };
 
 exports.getAllPossileViolators = (req, res) => {
+    // getting page's number.
+    let pageNumber = parseInt(req.query.pageNumber);
+    let pageSize = parseInt(req.query.pageSize);
+    let query = {};
+    
+    // handling event where pageNumber is lesser than or equal to 0.
+    if(pageNumber < 0 || pageNumber == 0){
+        response = {"error" : true,"message" : "invalid page number, should start with 1"};
+        return res.json(response);
+    }
+
+    query.skip = pageSize * (pageNumber - 1);
+    query.limit = pageSize;
+
     // getting all videos in the database.
-    vehicles.find({}).then(docs => {
+    vehicles.find({}, {}, query).then(docs => {
         console.log(docs);
-        res.render(__dirname + './../views/violatorlists.views.ejs', {violators: docs});
+        res.render(__dirname + './../views/violatorlists.views.ejs', {violators: docs, pageNumber: pageNumber});
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');
         res.send({msg: `Error occurred ${err}`});
