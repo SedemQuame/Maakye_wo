@@ -1,0 +1,27 @@
+/* .content {
+    min-height: 100vh;
+    height: auto;
+    transition: all 0.2s ease-in-out;
+} */
+
+.side-nav {
+    background-color: #212121;
+    color: #FFFFFF;
+    width: 16vw;
+    height: 100;
+}
+
+.button-collapse {
+    position: fixed;
+    left: 10px;
+    top: 60px;
+    z-index: 10;
+}
+
+
+/* 
+@media(min-width: 1440px) {
+    .content {
+        padding-left: 250px;
+    }
+} */

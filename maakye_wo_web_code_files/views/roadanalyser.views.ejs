@@ -1,13 +1,16 @@
 <%- include('./partials/header.ejs');-%>
-    <%- include('./partials/nav.ejs');-%>
+    <header>
+        <%- include('./partials/nav.ejs');-%>
+    </header>
 
+    <main>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-1 text-center" id="commands_one">
                     <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <!-- <a class="btn btn-outline-dark active" id="v-pills-home-tab" href="#road_video_pane">
-                            <img class="vertical_bar_btn" src="img/video.svg" alt="info">
-                        </a> -->
+                                <img class="vertical_bar_btn" src="img/video.svg" alt="info">
+                            </a> -->
                         <a class="btn btn-outline-dark" id="v-pills-profile-tab" href="#road_analytic_pane">
                             <img class="vertical_bar_btn" src="img/information.svg" alt="info">
                         </a>
@@ -21,18 +24,18 @@
                 </div>
                 <div class="col-11">
                     <!-- <div id="road_video_pane">
-                        <video controls width="100%" class="col-12" id="video_pane" src="/video" type="video/mp4">
-                            ....
-                            ....
-                            Sorry, your browser doesn't support embedded videos.
-                        </video>
-                        <div class="col-12" id="street_info_pane">
-                            <h1 class="header_styling">Chelsea Street, Camera #1 </h1>
-                            <p class="pane_sub_text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                        </div>
-                    </div> -->
+                            <video controls width="100%" class="col-12" id="video_pane" src="/video" type="video/mp4">
+                                ....
+                                ....
+                                Sorry, your browser doesn't support embedded videos.
+                            </video>
+                            <div class="col-12" id="street_info_pane">
+                                <h1 class="header_styling">Chelsea Street, Camera #1 </h1>
+                                <p class="pane_sub_text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                            </div>
+                        </div> -->
 
                     <div id="road_analytic_pane">
                         <h1 class="header_styling"> Road Analytics </h1>
@@ -129,73 +132,75 @@
         </div>
 
         </div>
+    </main>
 
-        <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
-        <script type="text/javascript">
-            var w = 300, //width
-                h = 300, //height
-                r = 150, //radius
-                color = d3.scale.category20(); //builtin range of colors
+    <script type="text/javascript">
+        var w = 300, //width
+            h = 300, //height
+            r = 150, //radius
+            color = d3.scale.category20(); //builtin range of colors
 
-            data = [{
-                "label": "<35Mph",
-                "value": 16
-            }, {
-                "label": "36 - 60 Mph",
-                "value": 90
-            }, {
-                "label": "61 - 75 Mph",
-                "value": 200
-            }, {
-                "label": "76 - 90 Mph",
-                "value": 65
-            }, {
-                "label": "91 - 120 Mph",
-                "value": 30
-            }];
+        data = [{
+            "label": "<35Mph",
+            "value": 16
+        }, {
+            "label": "36 - 60 Mph",
+            "value": 90
+        }, {
+            "label": "61 - 75 Mph",
+            "value": 200
+        }, {
+            "label": "76 - 90 Mph",
+            "value": 65
+        }, {
+            "label": "91 - 120 Mph",
+            "value": 30
+        }];
 
-            var vis = d3.select("#pieChart")
-                .append("svg:svg") //create the SVG element inside the #pieChart>
-                .data([data]) //associate our data with the document
-                .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
-                .attr("height", h)
-                .append("svg:g") //make a group to hold our pie chart
-                .attr("transform", "translate(" + r + "," + r + ")") //move the center of the pie chart from 0, 0 to radius, radius
+        var vis = d3.select("#pieChart")
+            .append("svg:svg") //create the SVG element inside the #pieChart>
+            .data([data]) //associate our data with the document
+            .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
+            .attr("height", h)
+            .append("svg:g") //make a group to hold our pie chart
+            .attr("transform", "translate(" + r + "," + r + ")"); //move the center of the pie chart from 0, 0 to radius, radius
 
-            var arc = d3.svg.arc() //this will create <path> elements for us using arc data
-                .outerRadius(r);
+        var arc = d3.svg.arc() //this will create <path> elements for us using arc data
+            .outerRadius(r);
 
-            var pie = d3.layout.pie() //this will create arc data for us given a list of values
-                .value(function(d) {
-                    return d.value;
-                }); //we must tell it out to access the value of each element in our data array
+        var pie = d3.layout.pie() //this will create arc data for us given a list of values
+            .value(function(d) {
+                return d.value;
+            }); //we must tell it out to access the value of each element in our data array
 
-            var arcs = vis.selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
-                .data(pie) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
-                .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-                .append("svg:g") //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-                .attr("class", "slice"); //allow us to style things in the slices (like text)
+        var arcs = vis.selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
+            .data(pie) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
+            .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
+            .append("svg:g") //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
+            .attr("class", "slice"); //allow us to style things in the slices (like text)
 
-            arcs.append("svg:path")
-                .attr("fill", function(d, i) {
-                    return color(i);
-                }) //set the color for each slice to be chosen from the color function defined above
-                .attr("d", arc); //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+        arcs.append("svg:path")
+            .attr("fill", function(d, i) {
+                return color(i);
+            }) //set the color for each slice to be chosen from the color function defined above
+            .attr("d", arc); //this creates the actual SVG path using the associated data (pie) with the arc drawing function
 
-            arcs.append("svg:text") //add a label to each slice
-                .attr("transform", function(d) { //set the label's origin to the center of the arc
-                    //we have to make sure to set these before calling arc.centroid
-                    d.innerRadius = 0;
-                    d.outerRadius = r;
-                    return "translate(" + arc.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
-                })
-                .attr("font-size", "10px")
-                .attr("fill", "white")
-                .attr("font-weight", "bold")
-                .attr("text-anchor", "middle") //center the text on it's origin
-                .text(function(d, i) {
-                    return data[i].label;
-                }); //get the label from our original data array
-        </script>
+        arcs.append("svg:text") //add a label to each slice
+            .attr("transform", function(d) { //set the label's origin to the center of the arc
+                //we have to make sure to set these before calling arc.centroid
+                d.innerRadius = 0;
+                d.outerRadius = r;
+                return "translate(" + arc.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
+            })
+            .attr("font-size", "10px")
+            .attr("fill", "white")
+            .attr("font-weight", "bold")
+            .attr("text-anchor", "middle") //center the text on it's origin
+            .text(function(d, i) {
+                return data[i].label;
+            }); //get the label from our original data array
+    </script>
 
+    <footer>
         <%- include('./partials/footer'); -%>
+    </footer>

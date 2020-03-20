@@ -14,8 +14,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 const fs = require('fs');
-
-
 // custom modules
 const db = require('./config/db.config');
 
@@ -57,7 +55,7 @@ app.use(passport.initialize());
 mongoose.Promise = global.Promise;
 
 const connectDB = async () => {
-    mongoose.connect(db.url, db.options);
+    await mongoose.connect(db.url, db.options);
     console.log('DB Connected....');
 };
 
@@ -66,8 +64,8 @@ connectDB();
 const assets = 'public/videos';
 const videName = 'detection'; // without extension
 
+{
 // router.get('/', (req, res) => {
-
 //     fs.access(assets+'/images/'+videName+'.jpg', fs.F_OK, (err) => {
         
 //         if (err) {
@@ -89,6 +87,7 @@ const videName = 'detection'; // without extension
 //         }
 //     });
 // });
+}
 
 // using route to stream videos.
 router.get('/video', (req, res) => {
