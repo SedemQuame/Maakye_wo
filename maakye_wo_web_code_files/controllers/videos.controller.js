@@ -35,16 +35,13 @@ exports.getAllPossileViolators = (req, res) => {
     let pageNumber = parseInt(req.query.pageNumber);
     let pageSize = parseInt(req.query.pageSize);
     let query = {};
-    
     // handling event where pageNumber is lesser than or equal to 0.
     if(pageNumber < 0 || pageNumber == 0){
         response = {"error" : true,"message" : "invalid page number, should start with 1"};
         return res.json(response);
     }
-
     query.skip = pageSize * (pageNumber - 1);
     query.limit = pageSize;
-
     // getting all videos in the database.
     vehicles.find({}, {}, query).then(docs => {
         console.log(docs);
