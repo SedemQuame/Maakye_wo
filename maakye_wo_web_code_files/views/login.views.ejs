@@ -11,8 +11,15 @@
                     </p>
                     <!-- login forms -->
                     <form action="/login" method="POST">
-                        <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="email_address"></div>
-                        <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password"></div>
+                        <!-- Material input -->
+                        <div class="md-form">
+                            <input type="text" id="email_address" class="form-control" name="email_address">
+                            <label for="email_address">Email address</label>
+                        </div>
+                        <div class="md-form">
+                            <input type="text" id="password" class="form-control" name="password">
+                            <label for="password">Password</label>
+                        </div>
                         <div class="form-group"><input type="Submit" value="Submit" class="btn btn-outline-dark btn-block"></div>
                     </form>
                     <!-- show signup button -->
@@ -21,6 +28,18 @@
                              Don't have an account? <br> Sign up
                         </a>
                     </p>
+
+                    <hr>
+                    <!-- Social login -->
+                    <p class="text-center">
+                        <a href="#">or sign in with:</a>
+                    </p>
+
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
                 </div>
 
             </div>
@@ -30,5 +49,5 @@
         <div class="container">
             <hr>
         </div>
-        <%- include('./partials/social_login'); -%>
-            <%- include('./partials/footer'); -%>
+        <!-- <%- include('./partials/social_login'); -%> -->
+        <%- include('./partials/footer'); -%>

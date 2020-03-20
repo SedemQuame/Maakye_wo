@@ -4,10 +4,25 @@
 }
 
 #street_info_pane {
-    border: 1px solid #d3d3d3;
-    min-height: 15vh;
-    max-height: 15vh;
-    margin-bottom: 20px;
+    /* min-height: 15vh;
+    max-height: 15vh; */
+    margin: 0;
+    padding: 0;
+}
+
+.map-container {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
 #road_info_pane {

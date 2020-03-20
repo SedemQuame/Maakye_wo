@@ -12,6 +12,10 @@ div {
     font-size: 18px;
 }
 
+.admin_action_buttons {
+    margin: 0;
+}
+
 .header_styling {
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
@@ -22,7 +26,8 @@ div {
 }
 
 .administrative_user_block {
-    margin: 10px;
+    padding: 0;
+    margin: 0;
 }
 
 .violator_image {

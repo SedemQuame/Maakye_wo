@@ -11,12 +11,36 @@
                     </p>
                     <!-- sign up forms -->
                     <form action="/signup" method="POST">
-                        <div class="form-group"><label for="">Full name</label><input type="text" class="form-control" name="full_name"></div>
-                        <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="email_address"></div>
-                        <div class="form-group"><label for="">Phone number</label><input type="text" class="form-control" name="phone_number"></div>
-                        <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password"></div>
-                        <div class="form-group"><label for="">Confirm password</label><input type="password" class="form-control"></div>
-                        <div class="form-group"><label for="">Driver's license id</label><input type="text" class="form-control" name="drivers_license_id"></div>
+                        <div class="md-form">
+                            <input type="text" id="full_name" class="form-control" name="full_name">
+                            <label for="full_name">Full name</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="text" id="email_address" class="form-control" name="email_address">
+                            <label for="email_address">Email address</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="text" id="phone_number" class="form-control" name="phone_number">
+                            <label for="phone_number">Phone number</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="text" id="password" class="form-control" name="password">
+                            <label for="password">Password</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="text" id="confirm_password" class="form-control" name="confirm_password">
+                            <label for="confirm_password">Confirm password</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="text" id="drivers_license_id" class="form-control" name="drivers_license_id">
+                            <label for="drivers_license_id">Driver's license id</label>
+                        </div>
+
                         <div class="form-group">
                             <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
                         </div>
@@ -27,15 +51,29 @@
                                Already got an account? <br> Login
                         </a>
                     </p>
+
+                    <hr>
+
+                    <!-- Social register -->
+                    <p class="text-center">
+                        <a class="" href="#">
+                            or sign up with:
+                        </a>
+                    </p>
+
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                    <hr>
+                    <!-- Terms of service -->
+                    <p class="text-center">By clicking
+                        <em>Sign up</em> you agree to our
+                        <a href="" target="_blank">terms of service</a>
+                    </p>
                 </div>
-
             </div>
-
         </div>
-
-        <div class="container">
-            <hr>
-        </div>
-
-        <%- include('./partials/social_login'); -%>
-            <%- include('./partials/footer'); -%>
+        <!-- <%- include('./partials/social_login'); -%> -->
+        <%- include('./partials/footer'); -%>
