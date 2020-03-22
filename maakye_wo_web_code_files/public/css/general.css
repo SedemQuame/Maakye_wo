@@ -12,6 +12,27 @@ div {
     font-size: 18px;
 }
 
+header {
+    height: 6vh;
+    width: 100vw;
+}
+
+main {
+    height: 90vh;
+    width: 100vw;
+}
+
+footer {
+    height: 4vh;
+    width: 100vw;
+}
+
+#lineChart,
+#barChart,
+#doughNutChart {
+    height: 300px;
+}
+
 .admin_action_buttons {
     margin: 0;
 }

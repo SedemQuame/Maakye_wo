@@ -4,10 +4,10 @@
     </header>
     <main>
         <div class="row">
-            <div class="col-md-2">
+            <div id="navContent" class="col-md-2">
                 <%- include('./partials/sidenav.ejs');-%>
             </div>
-            <div class="col-md-10">
+            <div id="mainContent" class="col-md-10">
 
                 <div class="mb-3 px-3" id="v-pills-violator-video">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -85,21 +85,32 @@
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem consequuntur distinctio obcaecati blanditiis, nulla magni nemo id deleniti soluta laudantium? Officiis nulla commodi consequuntur soluta nemo aliquam omnis aliquid alias?</p>
                     <hr>
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <h2 class="subheader_styling text-center">Line Chart Of Offences</h1>
+                        <div class="col-10">
+                            <h2 class="subheader_styling text-left">Line Chart Of Offences</h1>
+                                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dignissimos vitae explicabo et corrupti necessitatibus laborum dolorum repudiandae magni possimus voluptate esse ullam quas animi tenetur rem soluta, tempora
+                                    similique!
+                                </p>
                                 <hr>
+                                <!-- line chart -->
                                 <canvas id="lineChart"></canvas>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <h2 class="subheader_styling text-center">Bar Chart Of Car Speeds</h1>
+                        <div class="col-10">
+                            <h2 class="subheader_styling text-left">Bar Chart Of Car Speeds</h1>
+                                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dignissimos vitae explicabo et corrupti necessitatibus laborum dolorum repudiandae magni possimus voluptate esse ullam quas animi tenetur rem soluta, tempora
+                                    similique!
+                                </p>
                                 <hr>
+                                <!-- bar chart -->
                                 <canvas id="barChart"></canvas>
-
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <h2 class="subheader_styling text-center">Line Chart</h1>
+                        <div class="col-10">
+                            <h2 class="subheader_styling text-left">Line Chart</h1>
+                                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dignissimos vitae explicabo et corrupti necessitatibus laborum dolorum repudiandae magni possimus voluptate esse ullam quas animi tenetur rem soluta, tempora
+                                    similique!
+                                </p>
                                 <hr>
-                                <canvas id=""></canvas>
+                                <!-- doughnut chart -->
+                                <canvas id="doughNutChart"></canvas>
                         </div>
                     </div>
                 </div>
