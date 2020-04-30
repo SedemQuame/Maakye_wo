@@ -90,6 +90,7 @@
 .dashboard_img_div {
     max-height: 25vh;
     min-height: 25vh;
+    margin-top: 40px;
     text-align: center;
 }
 

@@ -5,6 +5,7 @@
     height: 95vh;
     position: fixed;
     z-index: 9;
+    margin-top: -2px;
 }
 
 .custom-scrollbar {
@@ -17,7 +18,8 @@ ul {
 }
 
 .collapsible-accordion {
-    padding: 20px;
+    padding-right: 26px;
+    padding-top: 5px;
 }
 
 .collapsible-list-item {
@@ -38,8 +40,17 @@ ul {
 }
 
 .button-collapse {
+    margin: 10px 0;
     position: fixed;
-    left: 13vw;
+    left: 14vw;
     top: 5.5vh;
     z-index: 10;
+    background-color: #2f3640;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.tiny-img {
+    width: 18px;
+    height: 18px;
 }

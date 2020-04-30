@@ -50,17 +50,18 @@ class app:
         if result.acknowledged:
             print("Successfully, stored vehicle data into database.")
             print("Video id: " + str(result.inserted_id))
+
             # getting license plate number
             # response = licensePlate.Extractor(response["url"]).ocrExtractor()
             # plateNumbers = response["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
 
-            # Test values to save OCR values.
+            # # Test values to save OCR values.
             plateNumbers = "AAA-001"
 
             # storing video data.
             self.storeVehicleData(result.inserted_id, plateNumbers)
             # storing road data.
-            self.storeRoadData(result.inserted_id)
+            # self.storeRoadData(result.inserted_id)
         else:
             print("Failed, to store vehicle data into database.")
 
@@ -68,11 +69,10 @@ class app:
         vehicles = self.db.vehicles
         # sample vehicle information that will be passed into the database.
         vehicle = {
-            'license': plateNumbers or "none",                        # This field, will pass the license number of the violator.
-            'vin_number': "1FwPCSZB7XPA16487",              # This field, will pass the vin number that was extracted if it exists.
-            'color': "Blue",                                # This field, will pass the recorded color.
-            'model': "Toyota Land Cruiser",                 # This field, will pass the data on the car model
-            'speed': "90kmph",                              # Recoreded speed of the car.
+            'license': plateNumbers or "none",              # This field, will pass the license number of the violator.
+            'color': "Red",                                # This field, will pass the recorded color.
+            'speed': "60kmph",                              # Recoreded speed of the car.
+            'date_created': str(datetime.date(datetime.now())),
             'video_id': str(storedVideoId)
         }
         result = vehicles.insert_one(vehicle)
@@ -99,7 +99,7 @@ class app:
         }
         result = roads.insert_one(road)
         if roads.acknowledged:
-            print("Road information addede to the database, successfully.")
+            print("Road information added to the database, successfully.")
             print("Road information, stored in row with id: " + str(result.inserted_id))
         else:
             print("Failed to add Road information to the database.")

@@ -5,34 +5,38 @@
 
             <div class="container">
                 <div class="row">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Occurences</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%for(let i = 0; i < roads.length; i++){%>
-                                <tr>
-                                    <th scope="row">
-                                        <%= (1+i) %>
-                                    </th>
-                                    <td>
-                                        <p>
-                                            <%= roads[i].street_name %>
-                                                <span class="float-right text-muted"> <%= roads[i].speed_range %> </span>
-                                        </p>
-                                        <hr>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <a class="nav-link btn btn-outline-dark" href="/roads">View</a>
-                                    </td>
-                                </tr>
-                                <%}%>
-                        </tbody>
-                    </table>
+                    <% if(roads.length == 0){ %>
+                        <%- include('./partials/empty_list'); -%>
+                            <% }else{ %>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Occurences</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for(let i = 0; i < roads.length; i++){%>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= (1+i) %>
+                                                </th>
+                                                <td>
+                                                    <p>
+                                                        <%= roads[i].street_name %>
+                                                            <span class="float-right text-muted"> <%= roads[i].speed_range %> </span>
+                                                    </p>
+                                                    <hr>
+                                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                    <a class="nav-link btn btn-outline-dark" href="/roads">View</a>
+                                                </td>
+                                            </tr>
+                                            <%}%>
+                                    </tbody>
+                                </table>
+
+                                <%- include('./partials/paginator'); -%>
+                                    <%}%>
                 </div>
             </div>
-
-            <%- include('./partials/paginator'); -%>
-                <%- include('./partials/footer'); -%>
+            <%- include('./partials/footer'); -%>

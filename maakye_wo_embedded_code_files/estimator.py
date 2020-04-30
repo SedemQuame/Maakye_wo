@@ -183,6 +183,7 @@ class SpeedEstimator:
         # app(self.keys, open(tempFile.path, "rb").read()).main()
         tempFile.cleanup()
 
+
     # program loop.
     def programLoop(self):
         while True:
@@ -459,6 +460,7 @@ class SpeedEstimator:
         print("[INFO] cleaning up...")
         self.vs.release()
 
+
     def main(self):
         # starting FPS.
         self.startFPS()
@@ -472,8 +474,6 @@ class SpeedEstimator:
         # destroying all used resources
         self.destroyUsedResources()
         
-
-
 
 # creating speed estimator object.
 videoSource = easygui.fileopenbox()

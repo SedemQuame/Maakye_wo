@@ -33,6 +33,11 @@ footer {
     height: 300px;
 }
 
+.emptyBox {
+    width: 150px;
+    height: 150px;
+}
+
 .admin_action_buttons {
     margin: 0;
 }

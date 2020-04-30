@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 // ==================================== creating database schema=======================================//
 const vehicleSchema = mongoose.Schema({
     license: { type: String },
-    vin_number: { type: String },
+    date_created: { type: String },
     color: { type: String },
-    model: { type: String },
+    // model: { type: String },a
     speed: {type: String},
     video_id: { type: String },
 });

@@ -1,5 +1,5 @@
 <%- include('./partials/header.ejs');-%>
-    <%- include('./partials/nav.ejs');-%>
+    <%- include('./partials/nav_log_out.ejs');-%>
         <!-- login portion -->
         <div class="container">
 
@@ -35,19 +35,9 @@
                         <a href="#">or sign in with:</a>
                     </p>
 
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+                    <%- include('./partials/social_login'); -%>
 
                 </div>
-
             </div>
-
         </div>
-
-        <div class="container">
-            <hr>
-        </div>
-        <!-- <%- include('./partials/social_login'); -%> -->
         <%- include('./partials/footer'); -%>

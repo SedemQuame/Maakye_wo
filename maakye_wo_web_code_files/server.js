@@ -151,7 +151,7 @@ app.get('/', (req, res) => {
     // res.json({ "message": "Welcome to maakye wo application." });
 
     // useful for rendering views in browser
-    res.redirect('/user_login');
+    res.redirect('/dashboard');
 });
 
 // ====================================== app listening port ======================================== //
