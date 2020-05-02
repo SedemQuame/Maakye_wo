@@ -21,26 +21,40 @@ const SALT_ROUNDS = 12;
 //================================== creating HTTP handler methods ==================================//
 // create new user
 exports.createUser = (req, res) => {   
+
+    console.log(req.body);
+    
     bcrypt.hash(req.body.password, SALT_ROUNDS, function(err, hash) {
         // Store hash in your password DB.
         user.create({
             full_name: req.body.full_name,
             password: hash,
-            user_type: 'normal',
             phone_number: req.body.phone_number,
             email_address: req.body.email_address,
-            access_level: undefined,
-            location_data: undefined,
-            drivers_license: req.body.drivers_license
+            access_level: req.body.access_level,
+            drivers_license: req.body.drivers_license,
         }).then(() => {
             console.log('spinning user account ... 🥱🥱🥱');
             console.log('user account created ... 😎😎😎');
             console.log('redirecting user .../');
+            // if(req.session.access_level){
+            //     console.log("session about to be destroyed");
+                
+            //     req.session.destroy(function(err) {
+            //         // cannot access session here
+            //         console.log("cannot access session");
+            //         console.log(err);
+            //     });
+            //     console.log("session destroyed");
+            // }else{
+                req.session.access_level = "1";
+            // }
             res.redirect('/dashboard');
         }).catch((err) => {
             console.log('spinning user account ... 🥱🥱🥱');
             console.log('user not created ... 😪🙄😣');
             console.log('redirecting user .../');
+            console.log(err);
             res.redirect('/user_signup');
         });
     });
@@ -71,6 +85,14 @@ exports.login = (req, res) => {
             if (response == true) {
                 console.log('redirecting user .../');
                 console.log('account found ... 😎😎😎');
+                console.log(returnedUser);
+
+                // saving returned user details in sessions
+                // req.session._id = returnedUser._id;
+                req.session.access_level = returnedUser.access_level;
+                console.log(returnedUser.access_level);
+                
+                
                 res.redirect('/dashboard');
             } else {
                 console.log('account not found ... 🥱🥱🥱');

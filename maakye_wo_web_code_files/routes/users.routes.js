@@ -6,6 +6,9 @@ module.exports = app => {
     //========================================== app users routes ============================================//
     app.route('/user_login')
         .get((req, res) => {
+//             req.session.destroy(function(err) {
+//   // cannot access session here
+// })
             res.render(__dirname + './../views/login.views.ejs');
         });
 

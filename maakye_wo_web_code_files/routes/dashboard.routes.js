@@ -6,6 +6,7 @@ module.exports = app => {
     //========================================== app dashboard routes ============================================//
     app.route('/dashboard')
         .get((req, res) => {
-            res.render(__dirname + './../views/dashboard.views.ejs');
+            console.log(`User Access Level ${req.session.access_level}`);
+            res.render(__dirname + './../views/dashboard.views.ejs', {access_level: req.session.access_level});
         });
 };

@@ -45,7 +45,7 @@ app.use(session({
     secret: 'some_random_keyboard_String',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: {maxAge: 600000}
 }));
 
 app.use(passport.initialize());
@@ -147,11 +147,13 @@ require('./routes/admin.routes')(app);
 
 // ========================================== app routes ============================================ //
 app.get('/', (req, res) => {
+    req.session.access_level = "0";
+    
     // useful for postman testing
     // res.json({ "message": "Welcome to maakye wo application." });
 
     // useful for rendering views in browser
-    res.redirect('/dashboard');
+    res.redirect('/user_signup');
 });
 
 // ====================================== app listening port ======================================== //
