@@ -7,7 +7,7 @@ module.exports = app => {
     //========================================== app dashboard routes ============================================//
     app.route('/violators')
         .get((req, res) => {
-            res.render(__dirname + './../views/violatoranalyser.views.ejs');
+            res.render(__dirname + './../views/violatoranalyser.views.ejs', {access_level: req.session.access_level});
     });
 
     app.route('/violators/:videoId')

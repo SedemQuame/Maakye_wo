@@ -19,7 +19,7 @@ exports.getAllRoads = (req, res) => {
     query.limit = pageSize;
     road.find({}, {}, query).then(docs => {
         console.log(docs);
-        res.render(__dirname + './../views/roadlists.views.ejs', {roads: docs, pageNumber: pageNumber});
+        res.render(__dirname + './../views/roadlists.views.ejs', {roads: docs, pageNumber: pageNumber, access_level: req.session.access_level});
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');
         res.send({msg: `Error occurred ${err}`});

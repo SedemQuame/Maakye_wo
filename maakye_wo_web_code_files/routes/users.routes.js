@@ -9,12 +9,12 @@ module.exports = app => {
 //             req.session.destroy(function(err) {
 //   // cannot access session here
 // })
-            res.render(__dirname + './../views/login.views.ejs');
+            res.render(__dirname + './../views/login.views.ejs', {access_level: req.session.access_level, msg: ""});
         });
 
     app.route('/user_signup')
         .get((req, res) => {
-            res.render(__dirname + './../views/signup.views.ejs');
+            res.render(__dirname + './../views/signup.views.ejs', {access_level: req.session.access_level, msg: ""});
         });
 
     // signup route

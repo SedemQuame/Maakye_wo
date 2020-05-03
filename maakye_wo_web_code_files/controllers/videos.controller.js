@@ -45,7 +45,7 @@ exports.getAllPossileViolators = (req, res) => {
     // getting all videos in the database.
     vehicles.find({}, {}, query).then(docs => {
         console.log(docs);
-        res.render(__dirname + './../views/violatorlists.views.ejs', {violators: docs, pageNumber: pageNumber});
+        res.render(__dirname + './../views/violatorlists.views.ejs', {violators: docs, pageNumber: pageNumber, access_level: req.session.access_level});
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');
         res.send({msg: `Error occurred ${err}`});

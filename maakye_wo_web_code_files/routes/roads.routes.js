@@ -6,7 +6,7 @@ module.exports = app => {
     //========================================== app dashboard routes ============================================//
     app.route('/roads')
         .get((req, res) => {
-            res.render(__dirname + './../views/roadanalyser.views.ejs');
+            res.render(__dirname + './../views/roadanalyser.views.ejs', {access_level: req.session.access_level});
     });
 
     app.route('/road_list').get(road.getAllRoads);

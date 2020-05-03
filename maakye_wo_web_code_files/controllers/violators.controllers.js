@@ -10,7 +10,7 @@ const video = require('../models/videos.models');
 exports.getViolatorRecords = (req, res) => {
     video.find({_id: req.params.videoId}).then(docs => {
         console.log(docs);
-        res.render(__dirname + './../views/violatoranalyser.views.ejs', {videoData: docs});
+        res.render(__dirname + './../views/violatoranalyser.views.ejs', {videoData: docs, access_level: req.session.access_level});
     }).catch();
 
 };

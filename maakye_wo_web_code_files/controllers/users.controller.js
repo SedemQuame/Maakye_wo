@@ -23,41 +23,47 @@ const SALT_ROUNDS = 12;
 exports.createUser = (req, res) => {   
 
     console.log(req.body);
-    
-    bcrypt.hash(req.body.password, SALT_ROUNDS, function(err, hash) {
-        // Store hash in your password DB.
-        user.create({
-            full_name: req.body.full_name,
-            password: hash,
-            phone_number: req.body.phone_number,
-            email_address: req.body.email_address,
-            access_level: req.body.access_level,
-            drivers_license: req.body.drivers_license,
-        }).then(() => {
-            console.log('spinning user account ... 🥱🥱🥱');
-            console.log('user account created ... 😎😎😎');
-            console.log('redirecting user .../');
-            // if(req.session.access_level){
-            //     console.log("session about to be destroyed");
-                
-            //     req.session.destroy(function(err) {
-            //         // cannot access session here
-            //         console.log("cannot access session");
-            //         console.log(err);
-            //     });
-            //     console.log("session destroyed");
-            // }else{
-                req.session.access_level = "1";
-            // }
-            res.redirect('/dashboard');
-        }).catch((err) => {
-            console.log('spinning user account ... 🥱🥱🥱');
-            console.log('user not created ... 😪🙄😣');
-            console.log('redirecting user .../');
-            console.log(err);
-            res.redirect('/user_signup');
+    if((req.body.password).length < 8){
+        res.render(__dirname + './../views/signup.views.ejs', {access_level: req.session.access_level, msg: "Password should be greater than 8 characters."});
+    }
+    if(req.body.password == req.body.confirm_password){
+        bcrypt.hash(req.body.password, SALT_ROUNDS, function(err, hash) {
+            // Store hash in your password DB.
+            user.create({
+                full_name: req.body.full_name,
+                password: hash,
+                phone_number: req.body.phone_number,
+                email_address: req.body.email_address,
+                access_level: req.body.access_level,
+                drivers_license: req.body.drivers_license,
+            }).then(() => {
+                console.log('spinning user account ... 🥱🥱🥱');
+                console.log('user account created ... 😎😎😎');
+                console.log('redirecting user .../');
+                // if(req.session.access_level){
+                //     console.log("session about to be destroyed");
+                    
+                //     req.session.destroy(function(err) {
+                //         // cannot access session here
+                //         console.log("cannot access session");
+                //         console.log(err);
+                //     });
+                //     console.log("session destroyed");
+                // }else{
+                    req.session.access_level = "1";
+                // }
+                res.redirect('/dashboard');
+            }).catch((err) => {
+                console.log('spinning user account ... 🥱🥱🥱');
+                console.log('user not created ... 😪🙄😣');
+                console.log('redirecting user .../');
+                console.log(err);
+                res.redirect('/user_signup');
+            });
         });
-    });
+    }else{
+        res.render(__dirname + './../views/signup.views.ejs', {access_level: req.session.access_level, msg: "Passwords don't match."});
+    }
 };
 
 // read user data
@@ -104,6 +110,8 @@ exports.login = (req, res) => {
         console.log('sorry, a serious error occurred ... 😪🙄😣');
         console.log('redirecting user .../');
         console.log(err);
-        res.redirect('/user_login');
+        // res.redirect('/user_login');
+        res.render(__dirname + './../views/login.views.ejs', {access_level: req.session.access_level, msg: "User account not found."});
+
     });
 };
