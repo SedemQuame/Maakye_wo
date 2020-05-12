@@ -1,0 +1,81 @@
+<%- include('./partials/header.ejs');-%>
+    <%- include('./partials/nav_log_out.ejs');-%>
+        <!-- signup portion -->
+
+        <div class="container">
+
+            <div class="row" id="signup_container">
+                <div class="col-12 offset-md-3 col-md-6 offset-md-3 login_or_sign_container">
+                    <%- include('./partials/alert.ejs');-%>
+
+                        <h1 class="text-center">Sign Up</h1>
+                        <p class="text-center text-muted">
+                            Create a new user account.
+                        </p>
+                        <!-- sign up forms -->
+                        <form action="/signup" method="POST">
+                            <div class="md-form">
+                                <input type="text" id="full_name" class="form-control" name="full_name">
+                                <label for="full_name">Full name</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="email_address" class="form-control" name="email_address">
+                                <label for="email_address">Email address</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="phone_number" class="form-control" name="phone_number">
+                                <label for="phone_number">Phone number</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="password" id="password" class="form-control" name="password">
+                                <label for="password">Password</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="password" id="confirm_password" class="form-control" name="confirm_password">
+                                <label for="confirm_password">Confirm password</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="drivers_license_id" class="form-control" name="drivers_license_id">
+                                <label for="drivers_license_id">Driver's license id</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="hidden" value="1" name="access_level">
+                                <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
+                            </div>
+                        </form>
+
+                        <!-- show login button -->
+                        <p class="text-center">
+                            <a class="" href="/user_login">
+                               Already got an account? <br> Login
+                        </a>
+                        </p>
+
+                        <hr>
+
+                        <!-- Social register -->
+                        <p class="text-center">
+                            <a class="" href="#">
+                            or login with:
+                        </a>
+                        </p>
+
+                        <%- include('./partials/social_login'); -%>
+
+                            <hr>
+                            <!-- Terms of service -->
+                            <p class="text-center">By clicking
+                                <em>Submit</em> you agree to our
+                                <a href="" target="_blank">terms of service</a>
+                            </p>
+
+                </div>
+            </div>
+        </div>
+        <%- include('./partials/footer'); -%>

@@ -1,0 +1,38 @@
+{
+    "name": "maakye_wo_web_code_files",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "directories": {
+        "start": "nodemon server.js",
+        "test": "tests"
+    },
+    "dependencies": {
+        "bcrypt": "^3.0.8",
+        "body-parser": "^1.19.0",
+        "dotenv": "^8.2.0",
+        "ejs": "^3.0.1",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "firebase": "^7.6.1",
+        "firebaseui": "^4.4.0",
+        "fs": "0.0.1-security",
+        "mongoose": "^5.8.1",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
+        "passport-local-mongoose": "^5.0.1",
+        "require": "^2.4.20",
+        "video.js": "^7.6.6"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "engines": {
+        "node": "12.13"
+    }
+}

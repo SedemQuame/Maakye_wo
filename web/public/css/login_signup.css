@@ -1,0 +1,15 @@
+#login_container,
+#signup_container {
+    margin-top: 7vh;
+}
+
+#social_login_pane {
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+}
+
+.login_or_sign_container {
+    min-height: 75vh;
+    /* border: 1px #d3d3d3 solid; */
+    border-radius: 5px;
+}

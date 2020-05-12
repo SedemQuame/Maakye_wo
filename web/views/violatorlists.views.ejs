@@ -1,0 +1,50 @@
+<%- include('./partials/header.ejs');-%>
+    <%- include('./partials/nav.ejs');-%>
+        <!-- <p>violator_analytics &lt; admin &gt;</p> -->
+        <%- include('./partials/list_filter'); -%>
+            <div class="container">
+                <div class="row">
+                    <% if(violators.length == 0){ %>
+                        <%- include('./partials/empty_list'); -%>
+                            <% }else{ %>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Occurences</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <%for(let i = 0; i < violators.length; i++){%>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= (1+i) %>
+                                                </th>
+                                                <td>
+                                                    <p>
+                                                        License Plate:
+                                                        <span class="text-muted"> <%= violators[i].license %> </span>
+                                                        <span class="float-right">
+                                                            Event Date: 
+                                                                <span class="text-muted"> <%= violators[i].date_created %></span>
+                                                        </span>
+                                                    </p>
+                                                    <hr>
+                                                    <p class="text-muted">
+                                                        Driver with vehicle registration number
+                                                        <b> <%= violators[i].license %> </b> was caught speeding, on the
+                                                        <b> &lt; road name &gt; </b> road.
+                                                    </p>
+                                                    <a class="nav-link btn btn-outline-dark" href="/violators/<%= violators[i].video_id %>">View</a> </td>
+                                            </tr>
+                                            <%}%>
+
+                                    </tbody>
+                                </table>
+                                <%- include('./partials/paginator'); -%>
+                                    <%}%>
+                </div>
+            </div>
+
+            <%- include('./partials/footer'); -%>

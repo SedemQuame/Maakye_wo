@@ -1,0 +1,116 @@
+#navContent {
+    padding: 0;
+    margin: 0;
+    margin-top: -40px;
+}
+
+#mainContent {
+    padding: 0;
+    margin: 0;
+    margin-top: -35px;
+}
+
+#video_pane {
+    border: 1px solid #d3d3d3;
+    height: 70vh;
+}
+
+#street_info_pane {
+    /* min-height: 15vh;
+    max-height: 15vh; */
+    margin: 0;
+    padding: 0;
+}
+
+.map-container {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#road_info_pane {
+    border: 1px solid #d3d3d3;
+    min-height: 20vh;
+}
+
+#list_pane {
+    max-height: 85vh;
+    overflow-y: auto;
+    display: none;
+}
+
+#commands_one,
+#commands_two {
+    border: 1px solid #d3d3d3;
+    height: 86vh;
+    padding: 10px;
+}
+
+#pane {
+    border: 2px solid #d3d3d3;
+    border-radius: 5px;
+    position: absolute;
+    right: 1.8vw;
+    top: 10vh;
+    min-height: 85vh;
+    max-height: 85vh;
+    overflow-y: auto;
+    background-color: #343A40;
+    color: #d3d3d3;
+    padding: 7px 5px;
+    display: none;
+}
+
+.vertical_bar_btn {
+    height: 20px;
+}
+
+.btn-outline-dark {
+    margin: 5px;
+    height: auto;
+    display: inline-block;
+}
+
+.file_upload_pane {
+    max-height: 30vh;
+    min-height: 30vh;
+    overflow-y: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dashboard_img_div {
+    max-height: 25vh;
+    min-height: 25vh;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.dashboard_img {
+    height: 60%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.uploaded_vehicle_img_list_item {
+    list-style: none;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.other-panes {
+    display: none;
+    border: 1px solid #d3d3d3;
+}

@@ -1,0 +1,8 @@
+/node_modules
+public/videos
+.idea
+dlib-19.6.zip
+opencv-speed-detector.zip
+npm-debug.log
+.DS_Store
+/*.env
