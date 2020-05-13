@@ -2,7 +2,6 @@
 //====================================== requiring modules ===========================================//
 const road = require('../models/roads.models');
 
-
 //================================== creating HTTP handler methods ==================================//
 exports.getAllRoads = (req, res) => {
     // getting all videos in the database.

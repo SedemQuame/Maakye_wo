@@ -134,7 +134,11 @@
                             <div class="col-8">
                                 <h3 class="header_styling">Issue Charge Back</h3>
                                 <p>Click to issue charge back</p>
-                                <button class="btn btn-outline-dark admin_action_buttons">Charge</button>
+                                <form action="/issue_charge" method="post">
+                                    <input type="hidden" name="action_type">
+                                    <input type="hidden" name="_id" value="">
+                                    <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Charge">
+                                </form>
                             </div>
                             <div class="col-4">
                                 <p>Status</p>
@@ -144,7 +148,11 @@
                             <div class="col-8">
                                 <h3 class="header_styling">Vehicle flagging</h3>
                                 <p>Flag Vehicle</p>
-                                <button class="btn btn-outline-dark admin_action_buttons">Flag</button>
+                                <form action="/vehicle_flagging" method="post">
+                                    <input type="hidden" name="action_type">
+                                    <input type="hidden" name="_id" value="">
+                                    <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Flag">
+                                </form>
                             </div>
                             <div class="col-4">
                                 <p>Status</p>
@@ -154,7 +162,11 @@
                             <div class="col-8 ">
                                 <h3 class="header_styling">License suspension</h3>
                                 <p>Suspend Driver's License</p>
-                                <button class="btn btn-outline-dark admin_action_buttons">Suspend</button>
+                                <form action="/license_suspension" method="post">
+                                    <input type="hidden" name="action_type">
+                                    <input type="hidden" name="_id" value="">
+                                    <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Suspend">
+                                </form>
                             </div>
                             <div class="col-4 ">
                                 <p>Status</p>

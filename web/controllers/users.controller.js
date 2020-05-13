@@ -12,7 +12,6 @@ const user = require('../models/users.models');
 
 // use static authenticate method of model in LocalStrategy
 passport.use(user.createStrategy());
-
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 

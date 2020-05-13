@@ -7,7 +7,12 @@ module.exports = app => {
     //========================================== app dashboard routes ============================================//
     app.route('/violators')
         .get((req, res) => {
-            res.render(__dirname + './../views/violatoranalyser.views.ejs', {access_level: req.session.access_level});
+            res.render(
+                __dirname + './../views/violatoranalyser.views.ejs', 
+                {
+                    access_level: req.session.access_level
+                }
+            );
     });
 
     app.route('/violators/:videoId')
@@ -15,4 +20,10 @@ module.exports = app => {
 
     app.route('/violator_list').get(vehicle.getAllPossileViolators);
 
+    // administrative actions
+    app.route('/issue_charge').post(violators.issueCharge);
+
+    // app.route('/vehicle_flagging').post(violators.flagVehicle);
+
+    // app.route('/license_suspension').post(violators.licenseSuspension);
 };

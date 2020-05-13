@@ -69,7 +69,7 @@ class app:
         vehicles = self.db.vehicles
         # sample vehicle information that will be passed into the database.
         administraticeActions = {
-            'charge_back': 'none',
+            'charge': 'none',
             'flag_vehicle':'flagged',
             'license_suspension': 'unsuspended'
         }
@@ -87,7 +87,7 @@ class app:
             'speed': "60kmph",                              # Recoreded speed of the car.
             'date_created': str(datetime.date(datetime.now())),
             'video_id': str(storedVideoId),
-            'administrative_actions': administraticeActions,
+            
             'registered_driver_info': registeredDriverInfo
         }
 

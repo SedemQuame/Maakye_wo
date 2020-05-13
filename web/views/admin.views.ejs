@@ -3,7 +3,41 @@
         <p>admin &lt; all &gt;</p>
 
         <div class="container">
+            <div class="row">
+                <!-- Change violator array, to notifications array. -->
+                <% if(notifications.length == 0){ %>
+                    <%- include('./partials/empty_list'); -%>
+                        <% }else{ %>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">User'sNotification Queue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%for(let i = 0; i < notifications.length; i++){%>
+                                        <tr>
+                                            <th scope="row">
+                                                <%= (1+i) %>
+                                            </th>
+                                            <td>
+                                                <p>
+                                                    Administrtive Action #X
+                                                </p>
+                                                <hr>
+                                                <p class="text-muted">
 
+                                                </p>
+                                                <a class="nav-link btn btn-outline-dark" href="/violators/<%= violators[i].video_id %>">View</a> </td>
+                                        </tr>
+                                        <%}%>
+
+
+                                </tbody>
+                            </table>
+                            <% } %>
+            </div>
         </div>
 
         <%- include('./partials/footer'); -%>
