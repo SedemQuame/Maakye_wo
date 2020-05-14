@@ -42,6 +42,48 @@
                         <p class="pane_sub_text">
                             Survellaince image, taken of vehicle involved in the traffic violation.
                         </p>
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <p>
+                                    License Plate:
+                                    <span class="float-right text-muted">
+                                        <%= vehicleData[0].license %>
+                                    </span>
+                                </p>
+
+                                <p>
+                                    Event Date:
+                                    <span class="float-right text-muted">
+                                        <%= vehicleData[0].date_created %>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <p>
+                                    Recorded Speed:
+                                    <span class="float-right text-muted">
+                                        <%= vehicleData[0].speed %>
+                                    </span>
+                                </p>
+
+                                <p>
+                                    Color:
+                                    <span class="float-right text-muted">
+                                        <!-- <%= vehicleData[0].color %> -->
+                                        Unrecorded
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <p>
+                                    Video ID:
+                                    <span class="float-right text-muted">
+                                        <%= vehicleData[0].video_id %>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -136,7 +178,7 @@
                                 <p>Click to issue charge back</p>
                                 <form action="/issue_charge" method="post">
                                     <input type="hidden" name="action_type">
-                                    <input type="hidden" name="_id" value="">
+                                    <input type="hidden" name="_id" value="<%= vehicleData[0]._id %>">
                                     <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Charge">
                                 </form>
                             </div>
@@ -150,7 +192,7 @@
                                 <p>Flag Vehicle</p>
                                 <form action="/vehicle_flagging" method="post">
                                     <input type="hidden" name="action_type">
-                                    <input type="hidden" name="_id" value="">
+                                    <input type="hidden" name="_id" value="<%= vehicleData[0]._id %>">
                                     <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Flag">
                                 </form>
                             </div>
@@ -164,7 +206,7 @@
                                 <p>Suspend Driver's License</p>
                                 <form action="/license_suspension" method="post">
                                     <input type="hidden" name="action_type">
-                                    <input type="hidden" name="_id" value="">
+                                    <input type="hidden" name="_id" value="<%= vehicleData[0]._id %>">
                                     <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Suspend">
                                 </form>
                             </div>

@@ -1,42 +1,74 @@
 <%- include('./partials/header.ejs');-%>
     <%- include('./partials/nav.ejs');-%>
-        <p>admin &lt; all &gt;</p>
 
         <div class="container">
             <div class="row">
-                <!-- Change violator array, to notifications array. -->
-                <% if(notifications.length == 0){ %>
-                    <%- include('./partials/empty_list'); -%>
-                        <% }else{ %>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">User'sNotification Queue</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%for(let i = 0; i < notifications.length; i++){%>
+                <div class="col-12 col-md-7 col-lg-8">
+                    <!-- Change violator array, to notifications array. -->
+                    <% if(notifications.length == 0){ %>
+                        <%- include('./partials/empty_list'); -%>
+                            <% }else{ %>
+                                <table class="table table-striped">
+                                    <thead>
                                         <tr>
-                                            <th scope="row">
-                                                <%= (1+i) %>
-                                            </th>
-                                            <td>
-                                                <p>
-                                                    Administrtive Action #X
-                                                </p>
-                                                <hr>
-                                                <p class="text-muted">
-
-                                                </p>
-                                                <a class="nav-link btn btn-outline-dark" href="/violators/<%= violators[i].video_id %>">View</a> </td>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Notification Queue</th>
                                         </tr>
-                                        <%}%>
+                                    </thead>
+                                    <tbody>
+                                        <%for(let i = 0; i < notifications.length; i++){%>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= (1+i) %>
+                                                </th>
+                                                <td>
+                                                    <p>
+                                                        Administrative Action:
+                                                        <span class="text-muted"> #X </span>
+                                                        <span class="float-right"> Date Created: 
+                                                            <span class="text-muted"> 
+                                                                <%= notifications[i].date %> 
+                                                            </span>
+                                                        </span>
+                                                    </p>
+                                                    <hr>
+                                                    <p class="text-muted">
+                                                        <%= notifications[i].details %>
+                                                    </p>
+                                                    <p class="tex-muted">
+                                                        By
+                                                        <%= notifications[0].user_id %>
+                                                    </p>
+                                                    <button onclick="previewerFunc(event)" class="nav-link btn btn-outline-dark">Review</button>
+                                            </tr>
+                                            <%}%>
 
 
-                                </tbody>
-                            </table>
-                            <% } %>
+                                    </tbody>
+                                </table>
+                                <% } %>
+                </div>
+
+                <div class="col-12 col-md-5 col-lg-4" style="margin-top: 30px;">
+                    <p>
+                        Administrative Action:
+                        <span class="text-muted"> #1 </span>
+                    </p>
+                    <p>
+                        Date Created:
+                        <span id="notification_date" class="text-muted"> <%= notifications[0].date %>  </span>
+                    </p>
+                    <hr>
+                    <p id="notification_details">
+                        <%= notifications[0].details %>
+                    </p>
+                    <p id="action_by">
+                        <%= notifications[0].user_id %>
+                    </p>
+                    <form action="#" method="">
+                        <input class="nav-link btn btn-outline-success btn-block " type="submit" value="Revert Action">
+                    </form>
+                </div>
             </div>
         </div>
 

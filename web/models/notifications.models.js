@@ -5,10 +5,9 @@ const mongoose = require('mongoose');
 
 // ==================================== creating database schema=======================================//
 const notificationSchema = mongoose.Schema({
-    user_type: { type: String },
+    user_id: { type: String },
     details: { type: String },
     date: { type: String },
-    actionBy: { type: String }
 });
 
 // ==================================== creating schema model =========================================//

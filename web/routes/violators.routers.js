@@ -23,7 +23,7 @@ module.exports = app => {
     // administrative actions
     app.route('/issue_charge').post(violators.issueCharge);
 
-    // app.route('/vehicle_flagging').post(violators.flagVehicle);
+    app.route('/vehicle_flagging').post(violators.flagVehicle);
 
-    // app.route('/license_suspension').post(violators.licenseSuspension);
+    app.route('/license_suspension').post(violators.licenseSuspension);
 };
