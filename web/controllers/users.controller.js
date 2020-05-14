@@ -5,7 +5,7 @@ require('dotenv').config({ path: __dirname + './../.env' });
 // node modules
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-
+const generatePassword = require('password-generator');
 
 // custom models
 const user = require('../models/users.models');
@@ -36,21 +36,10 @@ exports.createUser = (req, res) => {
                 access_level: req.body.access_level,
                 drivers_license: req.body.drivers_license,
             }).then(() => {
-                console.log('spinning user account ... 🥱🥱🥱');
-                console.log('user account created ... 😎😎😎');
+                // console.log('spinning user account ... 🥱🥱🥱');
+                // console.log('user account created ... 😎😎😎');
                 console.log('redirecting user .../');
-                // if(req.session.access_level){
-                //     console.log("session about to be destroyed");
-                    
-                //     req.session.destroy(function(err) {
-                //         // cannot access session here
-                //         console.log("cannot access session");
-                //         console.log(err);
-                //     });
-                //     console.log("session destroyed");
-                // }else{
-                    req.session.access_level = "1";
-                // }
+                req.session.access_level = "1";
                 res.redirect('/dashboard');
             }).catch((err) => {
                 console.log('spinning user account ... 🥱🥱🥱');
@@ -64,6 +53,34 @@ exports.createUser = (req, res) => {
         res.render(__dirname + './../views/signup.views.ejs', {access_level: req.session.access_level, msg: "Passwords don't match."});
     }
 };
+
+
+// create new user from root admin
+exports.createUserFrom = (req, res) => {   
+    console.log(req.body.access_level[0]);
+
+    let passwordText = 'qwerty';
+
+    bcrypt.hash(passwordText, SALT_ROUNDS, function(err, hash) {
+        user.create({
+            full_name: req.body.full_name,
+            password: hash,
+            phone_number: req.body.phone_number,
+            email_address: req.body.email_address,
+            access_level: req.body.access_level[0],
+            drivers_license: 'none',
+        }).then(() => {
+            console.log('spinning user account ... 🥱🥱🥱');
+            console.log('user account created ... 😎😎😎');
+            console.log('redirecting user .../');
+            res.redirect('/admin');
+        }).catch((err) => {
+            console.log(err);
+            res.redirect('/admin');
+        });
+    });
+};
+
 
 // read user data
 exports.retrieveUserData = (req, res) => {
@@ -86,6 +103,10 @@ exports.login = (req, res) => {
     user_to_login = user.where({ email_address: req.body.email_address });
     user_to_login.findOne().then((returnedUser) => {
         // Load hash from your password DB.
+
+        console.log(returnedUser);
+        
+
         bcrypt.compare(req.body.password, returnedUser.password).then(function(response) {
             if (response == true) {
                 console.log('redirecting user .../');

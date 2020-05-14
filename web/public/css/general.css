@@ -144,6 +144,17 @@ map-view {
     margin-bottom: 15px;
 }
 
+.add_user_btn {
+    position: absolute;
+    right: 15px;
+    top: 75px;
+}
+
+.add_user_img {
+    width: 3x0px;
+    height: 30px;
+}
+
 
 /* =========================== small screen =========================== */
 

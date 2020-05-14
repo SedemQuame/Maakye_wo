@@ -20,6 +20,9 @@ module.exports = app => {
     // signup route
     app.route('/signup').post(user.createUser);
 
+    // 
+    app.route('/root_signup').post(user.createUserFrom);
+
     // login route
     app.route('/login').post(user.login);
 };

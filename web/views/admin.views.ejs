@@ -4,6 +4,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-7 col-lg-8">
+
+
                     <!-- Change violator array, to notifications array. -->
                     <% if(notifications.length == 0){ %>
                         <%- include('./partials/empty_list'); -%>
@@ -12,7 +14,10 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Notification Queue</th>
+                                            <th scope="col">
+                                                Notification Queue
+
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +54,7 @@
                                 <% } %>
                 </div>
 
+
                 <div class="col-12 col-md-5 col-lg-4" style="margin-top: 30px;">
                     <p>
                         Administrative Action:
@@ -66,8 +72,62 @@
                         <%= notifications[0].user_id %>
                     </p>
                     <form action="#" method="">
-                        <input class="nav-link btn btn-outline-success btn-block " type="submit" value="Revert Action">
+                        <input class="nav-link btn btn-outline-dark btn-block " type="submit" value="Revert Action">
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-dark add_user_btn" data-toggle="modal" data-target="#basicExampleModal">
+            <img class="add_user_img" src="/img/add.svg" alt="" srcset="">
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Create New User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="">Spin up new user accounts, for other user's with varying levels of access.</p>
+
+                        <!-- sign up forms -->
+                        <form action="/root_signup" method="POST">
+                            <div class="md-form">
+                                <input type="text" id="full_name" class="form-control" name="full_name">
+                                <label for="full_name">Full name</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="email_address" class="form-control" name="email_address">
+                                <label for="email_address">Email address</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="phone_number" class="form-control" name="phone_number">
+                                <label for="phone_number">Phone number</label>
+                            </div>
+
+                            <div class="md-form">
+                                <select class="form-control" name="access_level">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">Low Teir</option>
+                                    <option value="2">Mid Teir</option>
+                                    <option value="3">High Teir</option>
+                                  </select>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="hidden" value="1" name="access_level">
+                                <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -41,7 +41,6 @@ exports.issueCharge = (req, res) => {
         res.send({msg: "Field updated ... "});
         
     }).catch(err => {
-        // console.log(`Error occurred: ${err}`);
         res.send({msg: "Update action unsuccessful."});
     });
 };
@@ -52,7 +51,6 @@ exports.flagVehicle = (req, res) => {
         doc.save();
         res.send({msg: "Field updated ... "});
     }).catch(err => {
-        // console.log(`Error occurred: ${err}`);
         res.send({msg: "Update action unsuccessful."});
     });
 };
@@ -63,7 +61,6 @@ exports.licenseSuspension = (req, res) => {
         doc.save();
         res.send({msg: "Field updated ... "});
     }).catch(err => {
-        // console.log(`Error occurred: ${err}`);
         res.send({msg: "Update action unsuccessful."});
     });
 };
