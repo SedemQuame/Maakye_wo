@@ -79,7 +79,7 @@
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn-outline-dark add_user_btn btn-sm btn-floating" data-toggle="modal" data-target="#createNewUsersDialog">
+        <button type="button" class="btn-outline-dark add_user_btn btn-white btn-sm btn-floating" data-toggle="modal" data-target="#createNewUsersDialog">
             <img class="add_user_img" src="/img/add.svg" alt="" srcset="">
         </button>
 
@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn-outline-dark minus_user_btn btn-sm btn-floating" data-toggle="modal" data-target="#existingUsersDialog">
+        <button type="button" class="btn-outline-dark minus_user_btn btn-white btn-sm btn-floating" data-toggle="modal" data-target="#existingUsersDialog">
             <img class="add_user_img" src="/img/minus.svg" alt="" srcset="">
         </button>
 
@@ -140,41 +140,46 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modify User Access</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Modify user access Or Drop user</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                     </div>
                     <div class="modal-body">
-                        <p class="">Modify or delete user accounts, with lower access levels.</p>
+                        <p class="">Modify user account's access levels.</p>
 
                         <!-- sign up forms -->
-                        <form action="/modify_user" method="POST">
+                        <form action="/modify_user" method="get">
                             <div class="md-form">
-                                <!-- <label for="full_name">Full name</label> -->
                                 <select class="form-control" name="user_to_modify">
                                     <option selected>Open this select menu</option>
-                                    <option value="1">User #1</option>
-                                    <option value="2">User #2</option>
-                                    <option value="3">User #3</option>
+                                    <% for(let j = 0; j < users.length; j++){ %>
+                                        <option type="text" value="<%= users[j]._id %>"> <%= users[j].full_name %> with access level <%= users[j].access_level %></option>
+                                    <% } %>
                                   </select>
                             </div>
 
                             <div class="md-form">
                                 <input type="text" id="current_acccess_level" class="form-control" name="current_acccess_level">
-                                <label for="current_acccess_level">Current Access Level</label>
+                                <label for="current_acccess_level">Reset User's Access Level</label>
                             </div>
 
-                            <div class="row">
-                                <div class="col-5">
-                                    <input type="Submit" value="Submit" class="btn btn-outline-dark btn-sm btn-block">
-                                </div>
-                                <div class="col-2"></div>
-                                <div class="col-5">
-                                    <input type="Submit" value="Drop User" class="btn btn-outline-dark btn-sm btn-block">
-                                </div>
-                            </div>
+                            <input type="Submit" value="Submit" class="btn btn-outline-dark btn-sm btn-block">
+                        </form>
 
+                        <hr>
+                        <p class="">Delete user accounts.</p>
+
+                        <form action="" method="get">
+                            <div class="md-form">
+                                <select class="form-control" name="user_to_modify">
+                                    <option selected>Open this select menu</option>
+                                    <% for(let j = 0; j < users.length; j++){ %>
+                                        <option type="text" value="<%= users[j]._id %>"> <%= users[j].full_name %> with access level <%= users[j].access_level %></option>
+                                    <% } %>
+                                  </select>
+                            </div>
+                            <input type="Submit" value="Drop User" class="btn btn-outline-dark btn-sm btn-block">
                         </form>
                     </div>
                 </div>
