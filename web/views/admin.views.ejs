@@ -44,7 +44,7 @@
                                                         By
                                                         <%= notifications[0].user_id %>
                                                     </p>
-                                                    <button onclick="previewerFunc(event)" class="nav-link btn btn-outline-dark">Review</button>
+                                                    <button onclick="previewerFunc(event)" class="nav-link btn btn-outline-dark btn-sm">Review</button>
                                             </tr>
                                             <%}%>
 
@@ -72,19 +72,19 @@
                         <%= notifications[0].user_id %>
                     </p>
                     <form action="#" method="">
-                        <input class="nav-link btn btn-outline-dark btn-block " type="submit" value="Revert Action">
+                        <input class="nav-link btn btn-outline-dark btn-block btn-sm" type="submit" value="Revert Action">
                     </form>
                 </div>
             </div>
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-dark add_user_btn" data-toggle="modal" data-target="#basicExampleModal">
+        <button type="button" class="btn-outline-dark add_user_btn btn-sm btn-floating" data-toggle="modal" data-target="#createNewUsersDialog">
             <img class="add_user_img" src="/img/add.svg" alt="" srcset="">
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="createNewUsersDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -124,12 +124,62 @@
 
                             <div class="form-group">
                                 <input type="hidden" value="1" name="access_level">
-                                <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
+                                <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block btn-sm">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
+        <button type="button" class="btn-outline-dark minus_user_btn btn-sm btn-floating" data-toggle="modal" data-target="#existingUsersDialog">
+            <img class="add_user_img" src="/img/minus.svg" alt="" srcset="">
+        </button>
+
+        <div class="modal fade" id="existingUsersDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modify User Access</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="">Modify or delete user accounts, with lower access levels.</p>
+
+                        <!-- sign up forms -->
+                        <form action="/modify_user" method="POST">
+                            <div class="md-form">
+                                <!-- <label for="full_name">Full name</label> -->
+                                <select class="form-control" name="user_to_modify">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">User #1</option>
+                                    <option value="2">User #2</option>
+                                    <option value="3">User #3</option>
+                                  </select>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="current_acccess_level" class="form-control" name="current_acccess_level">
+                                <label for="current_acccess_level">Current Access Level</label>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-5">
+                                    <input type="Submit" value="Submit" class="btn btn-outline-dark btn-sm btn-block">
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-5">
+                                    <input type="Submit" value="Drop User" class="btn btn-outline-dark btn-sm btn-block">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <%- include('./partials/footer'); -%>

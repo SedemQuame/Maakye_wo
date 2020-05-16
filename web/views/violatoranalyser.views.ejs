@@ -46,14 +46,14 @@
                             <div class="col-12 col-md-4">
                                 <p>
                                     License Plate:
-                                    <span class="float-right text-muted">
+                                    <span class="text-values float-right text-muted">
                                         <%= vehicleData[0].license %>
                                     </span>
                                 </p>
 
                                 <p>
                                     Event Date:
-                                    <span class="float-right text-muted">
+                                    <span class="text-values float-right text-muted">
                                         <%= vehicleData[0].date_created %>
                                     </span>
                                 </p>
@@ -61,14 +61,14 @@
                             <div class="col-12 col-md-4">
                                 <p>
                                     Recorded Speed:
-                                    <span class="float-right text-muted">
+                                    <span class="text-values float-right text-muted">
                                         <%= vehicleData[0].speed %>
                                     </span>
                                 </p>
 
                                 <p>
                                     Color:
-                                    <span class="float-right text-muted">
+                                    <span class="text-values float-right text-muted">
                                         <!-- <%= vehicleData[0].color %> -->
                                         Unrecorded
                                     </span>
@@ -78,7 +78,7 @@
                             <div class="col-12 col-md-4">
                                 <p>
                                     Video ID:
-                                    <span class="float-right text-muted">
+                                    <span class="text-values float-right text-muted">
                                         <%= vehicleData[0].video_id %>
                                     </span>
                                 </p>
@@ -179,7 +179,7 @@
                                 <form action="/issue_charge" method="post">
                                     <input type="hidden" name="action_type">
                                     <input type="hidden" name="_id" value="<%= vehicleData[0]._id %>">
-                                    <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Charge">
+                                    <input class="btn btn-outline-dark btn-sm admin_action_buttons" type="submit" value="Charge">
                                 </form>
                             </div>
                             <div class="col-4">
@@ -193,7 +193,7 @@
                                 <form action="/vehicle_flagging" method="post">
                                     <input type="hidden" name="action_type">
                                     <input type="hidden" name="_id" value="<%= vehicleData[0]._id %>">
-                                    <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Flag">
+                                    <input class="btn btn-outline-dark btn-sm admin_action_buttons" type="submit" value="Flag">
                                 </form>
                             </div>
                             <div class="col-4">
@@ -207,7 +207,7 @@
                                 <form action="/license_suspension" method="post">
                                     <input type="hidden" name="action_type">
                                     <input type="hidden" name="_id" value="<%= vehicleData[0]._id %>">
-                                    <input class="btn btn-outline-dark admin_action_buttons" type="submit" value="Suspend">
+                                    <input class="btn btn-outline-dark btn-sm admin_action_buttons" type="submit" value="Suspend">
                                 </form>
                             </div>
                             <div class="col-4 ">
@@ -219,6 +219,7 @@
             </div>
         </div>
     </main>
+
     <footer>
         <%- include('./partials/footer'); -%>
             <!-- Graph Parameter Controllers for violator page-->

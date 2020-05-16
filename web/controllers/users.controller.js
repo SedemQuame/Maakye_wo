@@ -56,7 +56,7 @@ exports.createUser = (req, res) => {
 
 
 // create new user from root admin
-exports.createUserFrom = (req, res) => {   
+exports.createUserFromRoot = (req, res) => {   
     console.log(req.body.access_level[0]);
 
     let passwordText = 'qwerty';
@@ -105,18 +105,16 @@ exports.login = (req, res) => {
         // Load hash from your password DB.
 
         console.log(returnedUser);
-        
-
         bcrypt.compare(req.body.password, returnedUser.password).then(function(response) {
             if (response == true) {
                 console.log('redirecting user .../');
                 console.log('account found ... 😎😎😎');
-                console.log(returnedUser);
+                // console.log(returnedUser);
 
                 // saving returned user details in sessions
                 // req.session._id = returnedUser._id;
                 req.session.access_level = returnedUser.access_level;
-                console.log(returnedUser.access_level);
+                // console.log(returnedUser.access_level);
                 
                 
                 res.redirect('/dashboard');
@@ -134,4 +132,9 @@ exports.login = (req, res) => {
         res.render(__dirname + './../views/login.views.ejs', {access_level: req.session.access_level, msg: "User account not found."});
 
     });
+};
+
+
+exports.modifyUserAccountFromRoot = (req, res) => {
+
 };

@@ -20,8 +20,11 @@ module.exports = app => {
     // signup route
     app.route('/signup').post(user.createUser);
 
-    // 
-    app.route('/root_signup').post(user.createUserFrom);
+    //  creating new user's from root admin.
+    app.route('/root_signup').post(user.createUserFromRoot);
+
+    //  modifying user information from root admin.
+    app.route('/modify_user').post(user.modifyUserAccountFromRoot);
 
     // login route
     app.route('/login').post(user.login);
