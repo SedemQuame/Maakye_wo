@@ -13,7 +13,7 @@ const roadSchema = mongoose.Schema({
     daily_humidity: { type: String },
     avg_vehicle_count: { type: String },
     number_of_accidents: { type: String },
-    camera_ids: { type: String }
+    camera_id: { type: String }
 });
 
 // ==================================== creating schema model =========================================//

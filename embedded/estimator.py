@@ -7,6 +7,8 @@ from imutils.io import TempFile
 from imutils.video import FPS
 from datetime import datetime
 from threading import Thread
+# import regulator
+from regulator import roadInfoUploadRegulator
 import bundler
 import numpy as np
 import argparse
@@ -24,7 +26,6 @@ import easygui
 # NOTE: When using an input video file, speeds will be inaccurate
 # because OpenCV can't throttle FPS according to the framerate of the
 # video. This script is for development purposes only.
-#
 # python speed_estimation_dl.py --conf config/config.json --input sample_data/cars.mp4
 
 class SpeedEstimator: 
@@ -40,6 +41,7 @@ class SpeedEstimator:
         # passed values.
         self.keys = keys
         self.conf = json.loads(keys.json_string)
+        self.counter = 0
 
         # initialize the list of class labels MobileNet SSD was trained to detect
         self.CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
@@ -80,7 +82,6 @@ class SpeedEstimator:
         # initialize the list of various points used to calculate the avg of the vehicle speed
         self.points = [("A", "B"), ("B", "C"), ("C", "D")]
 
-    
     # function responsible for starting the frames per second throughput estimator.
     def startFPS(self):
         self.fps = FPS().start()
@@ -127,6 +128,10 @@ class SpeedEstimator:
                 # filter out weak detections by ensuring the `confidence`
                 # is greater than the minimum confidence
                 if confidence > self.conf["confidence"]:
+                    # increase car counter for that day
+                    self.counter = self.counter + 1
+                    regulator.updateCountRecordFromDB(self.counter)
+
                     # extract the index of the class label from the
                     # detections list
                     idx = int(detections[0, 0, i, 1])
@@ -182,7 +187,6 @@ class SpeedEstimator:
         bundler.app(self.keys, tempFile.path).main()
         # app(self.keys, open(tempFile.path, "rb").read()).main()
         tempFile.cleanup()
-
 
     # program loop.
     def programLoop(self):
@@ -446,7 +450,6 @@ class SpeedEstimator:
             print("[INFO] elapsed time: {:.2f}".format(self.fps.elapsed()))
             print("[INFO] approx. FPS: {:.2f}".format(self.fps.fps()))
 
-
     def closeLogFile(self):
         # check if the log file object exists, if it does, then close it
         if self.logFile is not None:
@@ -459,7 +462,6 @@ class SpeedEstimator:
         # clean up
         print("[INFO] cleaning up...")
         self.vs.release()
-
 
     def main(self):
         # starting FPS.
@@ -474,6 +476,13 @@ class SpeedEstimator:
         # destroying all used resources
         self.destroyUsedResources()
         
+
+if(not os.path.exists('road_info_regulator.py')):
+    print("[INFO] MESSAGE: Creating configuration files.")
+    regulator = roadInfoUploadRegulator()
+    regulator.createTable()
+    regulator.insertIntoDB()
+
 
 # creating speed estimator object.
 videoSource = easygui.fileopenbox()

@@ -12,7 +12,9 @@ import pymongo
 import pprint
 import uploader
 import licensePlateExtractor as licensePlate
+import os.path
 from datetime import datetime
+from regulator import roadInfoUploadRegulator
 
 
 class app:
@@ -24,7 +26,6 @@ class app:
     def mongoDbConnection(self):
         try:
             client = pymongo.MongoClient(json.loads(keys.json_string)["MONGO_URL"])
-            # client = pymongo.MongoClient(json.loads(keys.json_string)["TEST_URL"])
             # Creating a database collection
             self.db = client.test
             print('MONGOCLIENT CONNECTION SUCCESSFUL.')
@@ -33,9 +34,8 @@ class app:
             # send a message to the user concerning connection failure.
             print('MONGOCLIENT CONNECTION UNSUCCESSFUL.')
 
-        # except :
 
-    def storeVideoData(self,response):
+    def storeVideoData(self, response, dataRegulator):
         recordedVideos = self.db.videos
         # sample recordedVideos information that will be passed into the database.
         uploadedVideo = {
@@ -54,14 +54,10 @@ class app:
             # getting license plate number
             response = licensePlate.Extractor(response["url"]).ocrExtractor()
             plateNumbers = response["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
-
-            # # Test values to save OCR values.
-            # plateNumbers = "AAA-001"
-
             # storing video data.
             self.storeVehicleData(result.inserted_id, plateNumbers)
             # storing road data.
-            self.storeRoadData(result.inserted_id)
+            self.storeRoadData(dataRegulator)
         else:
             print("Failed, to store vehicle data into database.")
 
@@ -98,20 +94,30 @@ class app:
         else:
             print("Failed to add vehicle information to the database.")
 
-    def storeRoadData(self, storedVideoId):
+    def storeRoadData(self, dataRegulator):
         roads = self.db.roads
         # sample roads information that will be passed into the database.
+        # road = {
+        #     'street_name': 'Chelsea Street',            #Gets street name and other meta-date such as speeding range and road score from google maps
+        #     'speed_range': '30kmp - 70kmph',
+        #     'road_score': '4.5',
+        #     'road_type': 'untade',                      
+        #     'daily_temp': '30deg',                      #Gets temperature and other weather parameters, on that street
+        #     'daily_humidity': '7.2',
+        #     'avg_vehicle_count': '24',
+        #     'number_of_accidents': '1',
+        #     'camera_id': 'dfsdfsfsdfsdfsdfsdfsfs',      #Special id, given to the camera.
+        # }
         road = {
-            'street_name': 'Chelsea Street',            #Gets street name and other meta-date such as speeding range and road score from google maps
-            'speed_range': '30kmp - 70kmph',
-            'road_score': '4.5',
-            'road_type': 'untade',                      
-            'daily_temp': '30deg',                      #Gets temperature and other weather parameters, on that street
-            'daily_humidity': '7.2',
-            'avg_vehicle_count': '24',
-            'number_of_accidents': '1',
-            'camera_ids': 'dfsdfsfsdfsdfsdfsdfsfs',      #Special id, given to the camera.
-            'video_id': str(storedVideoId)
+            'street_name': dataRegulator.selectDataFromDB()[0][1],
+            'speed_range': dataRegulator.selectDataFromDB()[0][2],
+            'road_score': dataRegulator.selectDataFromDB()[0][3],
+            'road_type': dataRegulator.selectDataFromDB()[0][4],
+            'daily_temp': dataRegulator.selectDataFromDB()[0][5],
+            'daily_humidity': dataRegulator.selectDataFromDB()[0][6],
+            'avg_vehicle_count': dataRegulator.selectDataFromDB()[0][7],
+            'number_of_accidents': dataRegulator.selectDataFromDB()[0][8],
+            'camera_id': dataRegulator.selectDataFromDB()[0][9],
         }
         result = roads.insert_one(road)
         if roads.acknowledged:
@@ -122,13 +128,15 @@ class app:
 
     # creating a main function through which the entire program, will be run.
     def main(self):
+
         uploaderObj = uploader.assetUploader(self.keys, self.video_local_url)
         response = uploaderObj.fileUploader()
         pprint.pprint(response)
         self.mongoDbConnection()
-        self.storeVideoData(response)
+        self.storeVideoData(response, dataRegulator)
 
         # cleaning up object from thread pool.
+        del regulator
         del uploaderObj
         del self 
 
