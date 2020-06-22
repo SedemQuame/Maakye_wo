@@ -1,6 +1,9 @@
 // jshint esversion:6
 //====================================== requiring modules ===========================================//
 const road = require('../models/roads.models');
+// Load the full build.
+const _ = require('lodash');
+
 
 //================================== creating HTTP handler methods ==================================//
 exports.getAllRoads = (req, res) => {
@@ -17,7 +20,13 @@ exports.getAllRoads = (req, res) => {
     query.skip = pageSize * (pageNumber - 1);
     query.limit = pageSize;
     road.find({}, {}, query).then(docs => {
+
+        docs = _.uniqBy(docs, function (e) {
+            return e.camera_id;
+        });
+
         console.log(docs);
+        // docs.save();
         res.render(__dirname + './../views/roadlists.views.ejs', {roads: docs, pageNumber: pageNumber, access_level: req.session.access_level});
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');

@@ -14,8 +14,6 @@ import uploader
 import licensePlateExtractor as licensePlate
 import os.path
 from datetime import datetime
-from regulator import roadInfoUploadRegulator
-
 
 class app:
     def __init__(self, keys, asset_url):
@@ -34,8 +32,7 @@ class app:
             # send a message to the user concerning connection failure.
             print('MONGOCLIENT CONNECTION UNSUCCESSFUL.')
 
-
-    def storeVideoData(self, response, dataRegulator):
+    def storeVideoData(self, response):
         recordedVideos = self.db.videos
         # sample recordedVideos information that will be passed into the database.
         uploadedVideo = {
@@ -57,7 +54,7 @@ class app:
             # storing video data.
             self.storeVehicleData(result.inserted_id, plateNumbers)
             # storing road data.
-            self.storeRoadData(dataRegulator)
+            self.storeRoadData()
         else:
             print("Failed, to store vehicle data into database.")
 
@@ -94,30 +91,19 @@ class app:
         else:
             print("Failed to add vehicle information to the database.")
 
-    def storeRoadData(self, dataRegulator):
+    def storeRoadData(self):
         roads = self.db.roads
         # sample roads information that will be passed into the database.
-        # road = {
-        #     'street_name': 'Chelsea Street',            #Gets street name and other meta-date such as speeding range and road score from google maps
-        #     'speed_range': '30kmp - 70kmph',
-        #     'road_score': '4.5',
-        #     'road_type': 'untade',                      
-        #     'daily_temp': '30deg',                      #Gets temperature and other weather parameters, on that street
-        #     'daily_humidity': '7.2',
-        #     'avg_vehicle_count': '24',
-        #     'number_of_accidents': '1',
-        #     'camera_id': 'dfsdfsfsdfsdfsdfsdfsfs',      #Special id, given to the camera.
-        # }
         road = {
-            'street_name': dataRegulator.selectDataFromDB()[0][1],
-            'speed_range': dataRegulator.selectDataFromDB()[0][2],
-            'road_score': dataRegulator.selectDataFromDB()[0][3],
-            'road_type': dataRegulator.selectDataFromDB()[0][4],
-            'daily_temp': dataRegulator.selectDataFromDB()[0][5],
-            'daily_humidity': dataRegulator.selectDataFromDB()[0][6],
-            'avg_vehicle_count': dataRegulator.selectDataFromDB()[0][7],
-            'number_of_accidents': dataRegulator.selectDataFromDB()[0][8],
-            'camera_id': dataRegulator.selectDataFromDB()[0][9],
+            'street_name': 'Chelsea Street',            #Gets street name and other meta-date such as speeding range and road score from google maps
+            'speed_range': '30kmp - 70kmph',
+            'road_score': '4.5',
+            'road_type': 'untade',                      
+            'daily_temp': '30deg',                      #Gets temperature and other weather parameters, on that street
+            'daily_humidity': '7.2',
+            'avg_vehicle_count': '24',
+            'number_of_accidents': '0',
+            'camera_id': 'ABC342342342432',      #Special id, given to the camera.
         }
         result = roads.insert_one(road)
         if roads.acknowledged:
@@ -125,24 +111,14 @@ class app:
             print("Road information, stored in row with id: " + str(result.inserted_id))
         else:
             print("Failed to add Road information to the database.")
-
     # creating a main function through which the entire program, will be run.
-    def main(self):
 
+    def main(self):
         uploaderObj = uploader.assetUploader(self.keys, self.video_local_url)
         response = uploaderObj.fileUploader()
         pprint.pprint(response)
         self.mongoDbConnection()
-        self.storeVideoData(response, dataRegulator)
-
+        self.storeVideoData(response)
         # cleaning up object from thread pool.
-        del regulator
         del uploaderObj
         del self 
-
-# caliing the main function.
-# asset_url = "license_plates/asset1.png"
-# app(keys, asset_url).main()
-
-# Possible Exceptions
-# 1. ValueError

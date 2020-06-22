@@ -17,6 +17,7 @@
         "firebase": "^7.6.1",
         "firebaseui": "^4.4.0",
         "fs": "0.0.1-security",
+        "lodash": "^4.17.15",
         "mongoose": "^5.8.1",
         "passport": "^0.4.1",
         "passport-local": "^1.0.0",

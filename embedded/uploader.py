@@ -14,8 +14,6 @@ import cloudinary.api
 import uuid
 import pprint
 
-
-
 class assetUploader:
     def __init__(self, keys, asset_url):
         self.keys = keys
@@ -30,7 +28,6 @@ class assetUploader:
     def fileUploader(self):    
         print("IN FILE UPLOADER")
         uuid = self.generateUUID()
-
         cloudinary.config( 
         cloud_name = json.loads(self.keys.json_string)["CLOUDINARY_NAME"], 
         api_key = json.loads(self.keys.json_string)["CLOUDINARY_KEY"], 
@@ -47,8 +44,6 @@ class assetUploader:
                         { "width": 300, "height": 300, "crop": "pad", "audio_codec": "none"},
                         { "width": 160, "height": 100, "crop": "crop", "gravity": "south",
                             "audio_codec": "none"}],
-                    # eager_async = True,
-                    # eager_notification_url = "https://mysite.example.com/notify_endpoint"
                     )
         print("File uploaded successfully.")
         return(response)

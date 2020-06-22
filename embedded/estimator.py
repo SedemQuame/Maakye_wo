@@ -7,8 +7,6 @@ from imutils.io import TempFile
 from imutils.video import FPS
 from datetime import datetime
 from threading import Thread
-# import regulator
-from regulator import roadInfoUploadRegulator
 import bundler
 import numpy as np
 import argparse
@@ -130,7 +128,6 @@ class SpeedEstimator:
                 if confidence > self.conf["confidence"]:
                     # increase car counter for that day
                     self.counter = self.counter + 1
-                    regulator.updateCountRecordFromDB(self.counter)
 
                     # extract the index of the class label from the
                     # detections list
@@ -476,13 +473,6 @@ class SpeedEstimator:
         # destroying all used resources
         self.destroyUsedResources()
         
-
-if(not os.path.exists('road_info_regulator.py')):
-    print("[INFO] MESSAGE: Creating configuration files.")
-    regulator = roadInfoUploadRegulator()
-    regulator.createTable()
-    regulator.insertIntoDB()
-
 
 # creating speed estimator object.
 videoSource = easygui.fileopenbox()

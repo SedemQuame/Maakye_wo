@@ -32,14 +32,17 @@
                                                         <span class="text-muted"> #X </span>
                                                         <span class="float-right"> Date Created: 
                                                             <span class="text-muted"> 
+                                                                <!-- <%= notifications[i].date %>  -->
                                                             </span>
                                                         </span>
                                                     </p>
                                                     <hr>
                                                     <p class="text-muted">
+                                                        <!-- <%= notifications[i].details %> -->
                                                     </p>
                                                     <p class="tex-muted">
                                                         By
+                                                        <!-- <%= notifications[0].user_id %> -->
                                                     </p>
                                                     <button onclick="previewerFunc(event)" class="nav-link btn btn-outline-dark btn-sm">Review</button>
                                             </tr>
@@ -58,14 +61,14 @@
                     </p>
                     <p>
                         Date Created:
-                        <span id="notification_date" class="text-muted">   </span>
+                        <span id="notification_date" class="text-muted"> <%= notifications[0].date %>  </span>
                     </p>
                     <hr>
                     <p id="notification_details">
-
+                        <%= notifications[0].details %>
                     </p>
                     <p id="action_by">
-
+                        <%= notifications[0].user_id %>
                     </p>
                     <form action="#" method="">
                         <input class="nav-link btn btn-outline-dark btn-block btn-sm" type="submit" value="Revert Action">
