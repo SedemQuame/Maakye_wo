@@ -9,7 +9,8 @@ const videoSchema = mongoose.Schema({
     asset_url: { type: String },
     format: { type: String },
     date_create: { type: String },
-    time_created: { type: String }
+    time_created: { type: String },
+    camera_id:  { type: String }
 });
 
 // ==================================== creating schema model =========================================//

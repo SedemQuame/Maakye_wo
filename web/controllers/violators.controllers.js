@@ -3,6 +3,7 @@
 const video = require('../models/videos.models');
 const vehicles = require('../models/vehicles.models');
 const notifications = require('../models/notifications.models');
+const road = require(`../models/roads.models`);
 
 
 //================================== creating HTTP handler methods ==================================//
@@ -11,15 +12,19 @@ const notifications = require('../models/notifications.models');
 exports.getViolatorRecords = (req, res) => {
     video.find({_id: req.params.videoId}).then(videoDocs => {
         // Getting the vehicles information.
-        vehicles.find({video_id: req.params.videoId}).then(vehicleDocs => {            
-            res.render(
-                __dirname + './../views/violatoranalyser.views.ejs',
-                {
-                    videoData: videoDocs, 
-                    vehicleData: vehicleDocs, 
-                    access_level: req.session.access_level
-                }
-            );
+        vehicles.find({video_id: req.params.videoId}).then(vehicleDocs => {    
+            road.findOne({camera_id: videoDocs[0].camera_id}).then(road => {
+                console.log(road);
+                res.render(
+                    __dirname + './../views/violatoranalyser.views.ejs',
+                    {
+                        videoData: videoDocs, 
+                        vehicleData: vehicleDocs, 
+                        access_level: req.session.access_level,
+                        road_id: road._id
+                    }
+                );
+            }).catch();
         }).catch();
     }).catch();
 };

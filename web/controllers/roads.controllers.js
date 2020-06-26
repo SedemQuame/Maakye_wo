@@ -20,16 +20,26 @@ exports.getAllRoads = (req, res) => {
     query.skip = pageSize * (pageNumber - 1);
     query.limit = pageSize;
     road.find({}, {}, query).then(docs => {
-
         docs = _.uniqBy(docs, function (e) {
             return e.camera_id;
         });
-
-        console.log(docs);
-        // docs.save();
+        // console.log(docs);
+        // // docs.save();
         res.render(__dirname + './../views/roadlists.views.ejs', {roads: docs, pageNumber: pageNumber, access_level: req.session.access_level});
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');
         res.send({msg: `Error occurred ${err}`});
     });
 };
+
+exports.getRoad = (req, res) => {    
+    road.findById({_id: req.params.roadId}).then(road => {
+        res.render(__dirname + './../views/roadanalyser.views.ejs', {
+            road_data: road,
+            access_level: req.session.access_level,
+        });
+    }).catch(err => {
+        console.log('Error occurred whilst returning all videos from the database.');
+        res.send({msg: `Error occurred ${err}`});
+    });
+}

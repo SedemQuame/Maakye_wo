@@ -2,7 +2,7 @@
 //====================================== requiring modules ===========================================//
 const video = require('../models/videos.models');
 const vehicles = require('../models/vehicles.models');
-
+const road = require(`../models/roads.models`);
 
 //================================== creating HTTP handler methods ==================================//
 // getting video data from db
@@ -45,7 +45,24 @@ exports.getAllPossileViolators = (req, res) => {
     // getting all videos in the database.
     vehicles.find({}, {}, query).then(docs => {
         console.log(docs);
-        res.render(__dirname + './../views/violatorlists.views.ejs', {violators: docs, pageNumber: pageNumber, access_level: req.session.access_level});
+        video.find({_id: docs[0].video_id}).then(video => {
+            console.log(`Video Doc: ${video}`);
+            road.findOne({camera_id: video[0].camera_id}).then(road => {
+
+                console.log(`Road Name: ${road}`);
+                
+                res.render(__dirname + './../views/violatorlists.views.ejs', {
+                    violators: docs,
+                    pageNumber: pageNumber,
+                    access_level: req.session.access_level,
+                    video: video,
+                    road_name: road.street_name,
+                    road_id: road._id
+                });
+            }).catch(() => {});
+        }).catch(() => {
+
+        });
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');
         res.send({msg: `Error occurred ${err}`});

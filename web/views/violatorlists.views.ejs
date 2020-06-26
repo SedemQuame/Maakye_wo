@@ -34,7 +34,8 @@
                                                     <p class="text-muted">
                                                         Driver with vehicle registration number
                                                         <b> <%= violators[i].license %> </b> was caught speeding, on the
-                                                        <b> &lt; road name &gt; </b> road.
+                                                        <a href="/roads/<%= road_id %>"> <b class="text-primary"> <%= road_name %></b> </a>
+                                                        road.
                                                     </p>
                                                     <a class="nav-link btn btn-outline-dark btn-sm" href="/violators/<%= violators[i].video_id %>">View</a> </td>
                                             </tr>

@@ -54,7 +54,6 @@ exports.createUser = (req, res) => {
     }
 };
 
-
 // create new user from root admin
 exports.createUserFromRoot = (req, res) => {   
     console.log(req.body.access_level[0]);
@@ -80,7 +79,6 @@ exports.createUserFromRoot = (req, res) => {
         });
     });
 };
-
 
 // read user data
 exports.retrieveUserData = (req, res) => {
@@ -113,10 +111,7 @@ exports.login = (req, res) => {
 
                 // saving returned user details in sessions
                 // req.session._id = returnedUser._id;
-                req.session.access_level = returnedUser.access_level;
-                // console.log(returnedUser.access_level);
-                
-                
+                req.session.access_level = returnedUser.access_level;                
                 res.redirect('/dashboard');
             } else {
                 console.log('account not found ... 🥱🥱🥱');
