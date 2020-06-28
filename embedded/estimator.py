@@ -31,10 +31,10 @@ class SpeedEstimator:
     # class constructor
     def __init__(self, keys, videoSource):
         # inform the user about framerates and speeds
-        print("[INFO] NOTE: When using an input video file, speeds will be " \
-            "inaccurate because OpenCV can't throttle FPS according to the " \
-            "framerate of the video. This script is for development purposes " \
-            "only.")
+        # print("[INFO] NOTE: When using an input video file, speeds will be " \
+        #     "inaccurate because OpenCV can't throttle FPS according to the " \
+        #     "framerate of the video. This script is for development purposes " \
+        #     "only.")
         
         # passed values.
         self.keys = keys
@@ -101,7 +101,6 @@ class SpeedEstimator:
             if pos == 0:
                 self.logFile.write("Year,Month,Day,Time,Speed (in MPH),ImageID\n")
 
-    # function for determining the type of algorithm to use in detecting
     # function for determining the type of algorithm to use in detecting
     # vehicle speed.
     def runComputationallyTaskingAlgoIfBasicAlgoFails(self):

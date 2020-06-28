@@ -7,32 +7,22 @@ Date: Monday, 11th February, 2020
 # modules
 import json
 import keys
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-import pprint
+import requests
+from pprint import pprint
 
 
 class Extractor: 
         def __init__(self, imageSrc):
                 self.imageSrc = imageSrc
+                self.regions = ['gb', 'ng'] # Change to your country
+                self.response = ""
 
 
         def ocrExtractor(self):
-                cloudinary.config( 
-                cloud_name = json.loads(keys.json_string)["CLOUDINARY_NAME"], 
-                api_key = json.loads(keys.json_string)["CLOUDINARY_KEY"], 
-                api_secret = json.loads(keys.json_string)["CLOUDINARY_SECRET"]
-                )
-                response = cloudinary.uploader.upload(self.imageSrc, ocr = "adv_ocr")
-                pprint.pprint(response)
-                return response
-                        
-# creating object, using plat extractor class.
-
-# numberPlate = Extractor("license_plates\images (2).jfif")
-# obj = numberPlate.ocrExtractor()
-
-# # Getting the license plate, numbers.
-# licensePlateText = obj["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
-# print(licensePlateText)
+                with open(self.imageSrc, 'rb') as fp:
+                        self.response = requests.post(
+                                'https://api.platerecognizer.com/v1/plate-reader/',
+                                data=dict(regions=self.regions),  # Optional
+                                files=dict(upload=fp),
+                                headers={'Authorization': 'Token 4ce5feee7181ddb1eb7de4db7638c487bb2fcf95'})
+                return json.dumps(self.response.json());

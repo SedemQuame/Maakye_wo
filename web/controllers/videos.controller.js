@@ -44,12 +44,13 @@ exports.getAllPossileViolators = (req, res) => {
     query.limit = pageSize;
     // getting all videos in the database.
     vehicles.find({}, {}, query).then(docs => {
-        console.log(docs);
-        video.find({_id: docs[0].video_id}).then(video => {
-            console.log(`Video Doc: ${video}`);
-            road.findOne({camera_id: video[0].camera_id}).then(road => {
+        console.log(`Vehicle Data: ${docs}`);
 
-                console.log(`Road Name: ${road}`);
+        video.find({_id: docs[0].video_id}).then(video => {
+            // console.log(`Video Doc: ${video}`);
+
+            road.findOne({camera_id: video[0].camera_id}).then(road => {
+                // console.log(`Road Name: ${road}`);
                 
                 res.render(__dirname + './../views/violatorlists.views.ejs', {
                     violators: docs,
@@ -59,9 +60,13 @@ exports.getAllPossileViolators = (req, res) => {
                     road_name: road.street_name,
                     road_id: road._id
                 });
-            }).catch(() => {});
-        }).catch(() => {
-
+            }).catch(err => {
+                console.log('Error occurred whilst returning all videos from the database.');
+                res.send({msg: `Error occurred ${err}`});
+            });
+        }).catch(err => {
+            console.log('Error occurred whilst returning all videos from the database.');
+            res.send({msg: `Error occurred ${err}`});
         });
     }).catch(err => {
         console.log('Error occurred whilst returning all videos from the database.');

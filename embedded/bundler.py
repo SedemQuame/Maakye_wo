@@ -41,7 +41,8 @@ class app:
             # 'duration': response["duration"],
             'format': response["format"],
             'date_created': str(datetime.date(datetime.now())),
-            'time_created': str(datetime.time(datetime.now()))
+            'time_created': str(datetime.time(datetime.now())),
+            'camera_id': 'ABC342342342432'
         }
         result = recordedVideos.insert_one(uploadedVideo)
         if result.acknowledged:
@@ -49,8 +50,7 @@ class app:
             print("Video id: " + str(result.inserted_id))
 
             # getting license plate number
-            response = licensePlate.Extractor(response["url"]).ocrExtractor()
-            plateNumbers = response["info"]["ocr"]["adv_ocr"]["data"][0]["textAnnotations"][0]["description"]
+            plateNumbers =  licensePlate.Extractor(self.video_local_url).ocrExtractor()
             # storing video data.
             self.storeVehicleData(result.inserted_id, plateNumbers)
             # storing road data.
@@ -75,9 +75,9 @@ class app:
         }
 
         vehicle = {
-            'license': plateNumbers or "none",              # This field, will pass the license number of the violator.
-            'color': "Red",                                # This field, will pass the recorded color.
-            'speed': "60kmph",                              # Recoreded speed of the car.
+            'license': plateNumbers or "Unrecorded",        # This field, will pass the license number of the violator.
+            'color': "Red",                                     # This field, will pass the recorded color.
+            'speed': "60kmph",                                  # Recoreded speed of the car.
             'date_created': str(datetime.date(datetime.now())),
             'video_id': str(storedVideoId),
             'administrative_actions': administrativeActions,
